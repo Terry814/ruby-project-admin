@@ -1,0 +1,27 @@
+<%= simple_form_for resource, as: resource_name, url: registration_path(resource_name), method: :put, remote: true do |f| %>
+  <%= f.input :full_name, placeholder: "Full name", wrapper: :field4 %>
+  <%= f.input :company_name, placeholder: "Company name", wrapper: :field4 %>
+  <%= f.input :phone_number, placeholder: "Mobile Number", wrapper: :field4 %>
+  <%= f.input :email, placeholder: "Email address", wrapper: :field4 %>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <%= f.hint "Currently waiting confirmation for: #{resource.unconfirmed_email}" %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.input :subscribed_to_emails, label: "Receive emails from AppEase (no spam!)", wrapper: :ib4 %>
+  </div>
+
+  <br/>
+  <div class="form-group">
+    <div class="col-sm-9">
+      To change your password, complete the info below.
+    </div>
+  </div>
+  <%= f.input :password, placeholder: "New password", wrapper: :field4 %>
+  <%= f.input :password_confirmation, placeholder: "New password confirmation", wrapper: :field4 %>
+
+  <br/>
+  <%= f.input :current_password, placeholder: "Current password", wrapper: :field4, hint: "Enter your current password to save changes." %>
+
+  <%= f.button :submit, "Save changes" %>
+<% end %>

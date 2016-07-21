@@ -1,0 +1,4 @@
+<%= div_for(pdf_file, class: "notification", style: "padding: 15px;") do %>
+  <div>"<%= pdf_file.menu_item.display_name %>" points to <a href="<%= pdf_file.pdf_file.url %>" target="blank"><%= pdf_file.pdf_file_file_name %></a></div>
+  <%= link_to '', extensions_pdf_file_path(pdf_file), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this PDF menu?", class: "notification-icon fa fa-times bg-default" %>
+<% end %>

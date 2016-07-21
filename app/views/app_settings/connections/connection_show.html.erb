@@ -1,0 +1,8 @@
+<% content_for :title, "Connections" %>
+<% content_for :page_icon, "fa-exchange" %>
+
+<%= upgrade_message_for! SocialStream %>
+
+<%= panel_view title: "Connect to #{@kind.capitalize}", icon: "fa-#{@kind}" do %>
+  <%= render "#{@kind}_connection", :identity => @identity  %>
+<% end %>

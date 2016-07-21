@@ -1,0 +1,11 @@
+<%= simple_form_for :coupon, url: accounts_billing_info_coupon_path, method: :post, remote: true, wrapper: :inline_form, html: {id: 'coupon-form', class: 'form-inline'} do |f| %>
+  <% if @error.present? %>
+   <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <%= @error %>
+    </div>
+  <% end %>
+  
+  <%= f.input :code, placeholder: "Coupon code" %>
+  <%= submit_tag "Add coupon", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,14 @@
+<p>
+  You can view your app in the AppEase Previews app. Just select the from the buttons below (from your phone - 
+  <%= link_to 'email me the links', publish_email_preview_links_path, method: :post, remote: true %>) and you can download our app. Once you have it, select Preview My App from the left nav, enter your email address, and then your app will be previewed for your approval. Note that you may need to quit and restart the app to see color changes.
+</p>
+<div class="padding-sm-vr">
+  <%= link_to "https://itunes.apple.com/us/app/previews/id954158855?mt=8", target: '_blank' do %>
+    <%= image_tag 'download-itunes.png', height: 70 %>
+  <% end %>
+  <a href="#">
+    <%= image_tag 'download-play.png', height: 70 %>
+  </a>
+</div>
+<%= link_to 'OK - I have previewed my app and I am ready to publish',
+    publish_step_three_path, remote: true, class: "btn btn-primary" %>

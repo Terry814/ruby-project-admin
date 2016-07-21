@@ -1,0 +1,10 @@
+<%= simple_form_for [@social_stream, @new_source_account], url: app_settings_social_stream_accounts_path, remote: true, html: {id: 'instagram-hashtag-form'} do |f| %>
+  <%= f.input :service, input_html: {value: 'instagram'}, as: :hidden %>
+  <%= f.input :form_id, input_html: {value: 'instagram-hashtag-form'}, as: :hidden %>
+  
+  <%= resource_error_messages! @new_source_account %> 
+  <div class="form-group">
+    <%= f.input :hashtag, placeholder: "Hashtag", required: true, wrapper: :if5 %>
+    <%= submit_tag "Add hashtag", class: "btn btn-primary" %>
+  </div>
+<% end %>

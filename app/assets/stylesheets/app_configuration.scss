@@ -1,0 +1,25 @@
+.app_configuration {
+  .screenshot {
+    margin: 5px;
+    cursor: pointer;
+    border: 0.5px gray solid;
+  }
+  .btn {
+    margin-top: 5px;
+  }
+  @media (min-width: 481px) {
+    .screenshot {
+      width: 150px;
+    }
+  }
+  @media (max-width: 480px) and (min-width: 351px) {
+    .screenshot {
+      width: 130px;
+    }
+  }
+  @media (max-width: 350px) {
+    .screenshot {
+      width: 100px;
+    }
+  }
+}

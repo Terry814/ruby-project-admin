@@ -1,0 +1,12 @@
+<% content_for :title, "App Description" %>
+<% content_for :page_icon, 'fa-tags' %>
+
+<%= panel_view title: "Create your Apple iTunes app profile", icon: "fa-apple",
+  heading_text: publishing_changes do %>
+  <%= render 'ios_form' %>
+<% end %>
+
+<%= panel_view title: "Create your Google Play app profile", icon: "fa-android",
+  heading_text: publishing_changes do %>
+  <%= render 'android_form' %>
+<% end %>

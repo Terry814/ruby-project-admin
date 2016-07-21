@@ -1,0 +1,12 @@
+<% cat_form_path = cat.new_record? ? extensions_product_menu_categories_path : extensions_product_menu_category_path(cat) %>
+<%= simple_form_for cat, url: cat_form_path, remote: true, html: {id: "category-form"} do |f| %>
+  <%= resource_error_messages! cat %>
+  <div class="form-group">
+    <%= f.input :name, placeholder: "Add category name", wrapper: :if4 %>
+    <% max_pos = @product_menu.categories.count %>
+    <% max_pos = max_pos - 1 unless cat.new_record? %>
+    <% choices = 0.upto(max_pos).collect {|pos| ["Order: #{pos + 1}", pos]} %>
+    <%= f.input :position, collection: choices, include_blank: false, wrapper: :if4 %>
+  </div>
+  <%= f.button :submit, cat.new_record? ? "Create category" : "Save category" %>
+<% end %>

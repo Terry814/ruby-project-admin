@@ -1,0 +1,5 @@
+<%= simple_form_for @feedback, url: extensions_customer_feedback_path, method: :patch, remote: true, html: {id: "customer-feedback-form" } do |f| %>
+  <%= resource_error_messages! @feedback unless @feedback.updating_info %>
+  <%= render 'shared/menu_item_fields', form: f %>
+  <%= f.button :submit, "Save changes" %>
+<% end %>

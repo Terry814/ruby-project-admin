@@ -1,0 +1,6 @@
+<%= form.simple_fields_for :menu_item do |mf| %>
+  <div class="form-group">
+    <%= mf.input :display_name, placeholder: "Menu Label", wrapper: :if4 %>
+    <%= mf.input :enabled, label: "Enabled", wrapper: :ib3 %>
+  </div>
+<% end %>

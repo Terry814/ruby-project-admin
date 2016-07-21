@@ -1,0 +1,19 @@
+<% content_for :title, "Coupons" %>
+<% content_for :page_icon, 'fa-money' %>
+
+<%= upgrade_message_for! Coupons %>
+
+<%= menu_settings_panel do %>
+  <%= render 'form' %>
+<% end %>
+
+<%= panel_view title: "Create a coupon", icon: "fa-money" do %>
+  <%= render 'coupon_form', coupon_info: @new_coupon_info %>
+<% end %>
+
+<%= panel_view title: "Existing coupons", icon: "fa-money",
+               class: "widget-notifications", body_class: "padding-sm" do %>
+  <div class="notifications-list" id="coupon-infos">
+    <%= render partial: 'coupon', collection: @coupons.coupon_infos.all %>
+  </div> <!-- / .panel-body -->
+<% end %>

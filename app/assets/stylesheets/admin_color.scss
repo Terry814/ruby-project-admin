@@ -1,0 +1,9 @@
+body.switched-user {
+  background: #ffffff;
+  #main-menu .navigation li.active > a,
+  #main-menu .mmc-dropdown-open-ul li.active > a {
+    color: #1e2125;
+    background: #ffffff;
+  }
+}
+

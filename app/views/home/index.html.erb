@@ -1,0 +1,56 @@
+<% asi = current_user.application_info.app_stores_info %>
+<div class="page-profile">
+  <div class="profile-full-name">
+    <span class="text-semibold"><%= asi.ios_app_name || asi.android_app_name || '[No name]'%></span>
+  </div>
+  <div class="profile-row">
+    <div class="left-col">
+      <div class="profile-block">
+	<div class="panel profile-photo">
+	  <img src="<%= asi.app_icon.url %>" alt="App icon">
+	</div>
+	<br>
+	<a href="<%= publish_path %>" class="btn <%= current_user.ready_to_publish? ? 'btn-primary' : 'disabled' %>"><i class="fa fa-flag-checkered"></i>&nbsp;&nbsp;Click to Publish</a>&nbsp;&nbsp;
+      </div>
+
+      <% unless current_user.ready_to_publish? %>
+      <div class="panel panel-transparent">
+	<div class="panel-body" style="text-align: center;">
+	  Complete the items on the right to publish your app.
+	</div>
+      </div>
+      <% end %>
+    </div>
+    <div class="right-col">
+      <hr class="profile-content-hr no-grid-gutter-h">
+      <div class="profile-content">
+	<ul id="profile-tabs" class="nav nav-tabs">
+	  <li class="dropdown pull-right tabdrop hide">
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i> <b class="caret"></b></a>
+	    <ul class="dropdown-menu"></ul>
+	  </li>
+	  <li class="">
+	    <a href="#profile-tabs-timeline" data-toggle="tab">Steps to Publish Your App</a>
+	  </li>
+	</ul>
+	<div class="tab-content tab-content-bordered panel-padding">
+	  <div>
+	    <div class="timeline">
+	      <% @tasks.each do |task| %>
+	      <div class="tl-entry">
+		<div class="tl-icon<%= task.completed?(current_user) ? ' bg-success' : '' %>">
+		  <i class="fa <%= task.badge %>"></i>
+		</div>
+		<div class="panel tl-body">
+		  <h4 class="text-info"><a href="<%= task.url ? send(task.url) : '' %>"><%= task.name %></a></h4>
+		  <%= task.copy %>
+		</div>
+	      </div>
+	      <% end %>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>

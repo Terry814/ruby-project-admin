@@ -1,0 +1,8 @@
+<% if @new_placement_id.errors.any? %>
+  $('#<%= dom_id(@new_placement_id) %>').replaceWith("<%=j render 'form', ad_placement_id: @new_placement_id %>");
+<% else %>
+  <% new_placement_id = build_new_placement_id %>
+  $('#<%= dom_id(new_placement_id) %>').replaceWith("<%=j render 'form', ad_placement_id: new_placement_id %>");
+  <% list_id = @new_placement_id.ios? ? 'ios-placement-list' : 'android-placement-list' %>
+  $('#<%= list_id %>').append("<%=j render 'ad_placement_id', ad_placement_id: @new_placement_id %>");
+<% end %>

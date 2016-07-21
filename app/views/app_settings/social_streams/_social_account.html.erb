@@ -1,0 +1,6 @@
+<%= div_for(social_account, class: "notification", style: "padding: 15px;") do %>
+  <div class="notification-title text-info"><%= social_account.service.capitalize %></div>
+  <div><%= link_to social_account_display_name(social_account),
+                   social_account_url(social_account), target: 'blank' %></div>
+  <%= link_to '', app_settings_social_stream_account_path(social_account), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this account?", class: "notification-icon fa fa-times bg-default" %>  
+<% end %>

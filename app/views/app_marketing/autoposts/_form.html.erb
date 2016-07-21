@@ -1,0 +1,16 @@
+<%= simple_form_for @autopost, url: app_marketing_autopost_path, method: :patch, remote: true, wrapper: :horizontal_form_with_labels, html: { id: 'autopost-form' } do |f| %>
+  <%= resource_error_messages! @autopost %>
+
+  <%= f.input :enabled, label: "Enable Autopost" %>
+  <%= f.input :interval, collection: autopost_interval_options, include_blank: false %>
+  <%= f.input :randomized, label: "Randomize", hint: "We'll stick to your schedule but in a less bot-like way." %>
+
+  <%= f.association :social_source_accounts, collection: autopost_social_sources, label_method: method(:social_source_account_label), as: :check_boxes, hint: social_source_accounts_hint, label: "Sources", item_label_class: 'lbl' %>
+
+  <%= f.input :hashtag, hint: "Attract viewers to your posts with a meaningful hash tag.", required: false %>
+  <%= f.input :url, hint: "Include a shortened URL to your app download page.", required: false, placeholder: "http://" %>
+
+  <%= f.association :identities, collection: current_user.identities.where(provider: Identity.providers[:twitter]), label_method: method(:connection_label), as: :check_boxes, hint: twitter_connection_hint, label: "Post To My" %>
+
+  <%= f.button :submit, "Save settings", class: "col-sm-offset-2" %>
+<% end %>

@@ -1,0 +1,4 @@
+$('#<%= dom_id @company_info %>').html("<%=j render 'company_info_form' %>");
+<% if @companies %>
+  $('#companies-form').html("<%=j render 'companies_form' %>");
+<% end %>

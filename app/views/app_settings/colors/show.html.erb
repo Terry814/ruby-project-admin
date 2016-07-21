@@ -1,0 +1,13 @@
+<% content_for :title, "Colors" %>
+<% content_for :page_icon, 'fa-tint' %>
+
+<%= panel_view title: "App Colors", icon: "fa-tint" do %>
+
+  <%= simple_form_for :theme, url: '#' do |f| %>
+
+    <%= f.input :scheme, collection: %w( dark light custom ), label_method: -> (s) { "#{s.capitalize} Color Scheme" }, checked: 'custom', as: :radio_buttons %>
+
+  <% end %>
+
+  <%= render 'form' %>
+<% end %>

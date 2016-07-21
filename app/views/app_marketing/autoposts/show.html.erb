@@ -1,0 +1,9 @@
+<% content_for :title, "Autopost" %>
+<% content_for :page_icon, 'fa-heart' %>
+
+<%= upgrade_message_for! :autoposts %>
+
+<%= panel_view title: "Autopost", icon: "fa-star" do %>
+  AppEase will automatically find the most popular post from your social stream sources and re-post it to your social media accounts, including a hashtag and url that you define. By sharing this popular content under your social handle you'll gain followers and increase exposure to your app. More downloads!
+  <%= render 'form' %>
+<% end %>

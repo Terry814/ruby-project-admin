@@ -1,0 +1,16 @@
+<%= simple_form_for @company_info, url: new_user_wizard_companies_path, method: :get, remote: true, wrapper: :horizontal_form_with_labels do |f| %>
+  <%= resource_error_messages! @company_info %>
+
+  <%= f.input :name, label: "Company name" %>
+  <%= f.input :web_link, label: "Website" %>
+  <%= f.input :street %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.input :postal_code %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-5">
+      <%= submit_tag "Get it", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

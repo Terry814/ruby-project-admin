@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+<head>
+  <%= render partial: 'layouts/head' %>
+</head>
+<body class="theme-clean<%= content_class(:body_class) %>">
+
+  <!-- Page background -->
+  <div id="page-signin-bg">
+    <!-- Background overlay -->
+    <div class="overlay"></div>
+    <!-- Replace this with your bg image -->
+    <%= image_tag('loginbg_3000.jpg') %>
+  </div>
+  <!-- / Page background -->
+
+  <!-- Container -->
+  <div class="<%= controller_name %><%= content_class(:container_class) %>">
+    <%= yield %>
+  </div>
+
+  <%= content_for :after_container %>
+
+</body>
+</html>

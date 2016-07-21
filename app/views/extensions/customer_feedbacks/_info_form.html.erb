@@ -1,0 +1,10 @@
+<%= simple_form_for @feedback, url: extensions_customer_feedback_info_path, method: :patch, remote: true, html: {id: "customer-feedback-info-form"} do |f| %>
+  <%= resource_error_messages! @feedback if @feedback.updating_info %>
+
+  <%= f.input :email, placeholder: "Email address for customer feedback", wrapper: :field4, required: true %>
+  <%= f.input :trip_advisor_url, placeholder: "TripAdvisor profile URL", wrapper: :field5 %>
+  <%= f.input :yelp_url, placeholder: "Yelp profile URL", wrapper: :field5 %>
+  <%= f.input :message_threshold, collection: feedback_threshold_options, include_blank: false, wrapper: :field5 %>
+  <%= f.input :message, placeholder: "Enter your custom we're sorry message", input_html: {rows: 4} %>
+  <%= f.button :submit, "Save changes" %>
+<% end %>

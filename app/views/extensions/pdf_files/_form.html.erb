@@ -1,0 +1,10 @@
+<%= simple_form_for pdf_file, url: extensions_pdf_files_path, remote: true do |f| %>
+  <%= resource_error_messages! pdf_file %>
+  <div class="form-group">
+    <%= f.input :pdf_file, wrapper: :if7, required: true %>
+    <%= f.simple_fields_for :menu_item do |mf| %>
+      <%= mf.input :display_name, placeholder: "Menu Label", wrapper: :if4 %>
+    <% end %>
+  </div>
+  <%= f.button :submit, "Create PDF menu" %>
+<% end %>

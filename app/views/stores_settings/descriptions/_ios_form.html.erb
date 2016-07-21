@@ -1,0 +1,14 @@
+<%= simple_form_for @app_stores_info, url: stores_settings_description_ios_path, method: :patch, remote: true, html: { id: "ios-form" } do |f| %>
+  <%= resource_error_messages! @app_stores_info if @app_stores_info.updating_ios %>
+  <div class="form-group">
+    <%= f.input :ios_app_name, placeholder: "App name", wrapper: :if4, required: true %>
+    <%= f.input :ios_icon_label, placeholder: "App icon", wrapper: :if4, required: true %>
+  </div>
+  <div class="form-group">
+    <% ios_cats = AppStoresInfo::APPSTORE_CATEGORIES.map { |k, v| [v, k]} %>
+    <%= f.input :ios_first_category, collection: ios_cats, prompt: 'App Store Primary Category', wrapper: :if4, required: true %>
+    <%= f.input :ios_second_category, collection: ios_cats, prompt: 'App Store Secondary Category', wrapper: :if4 %>
+  </div>
+  <%= f.input :ios_description, placeholder: "App description", input_html: {rows: 5}, required: true %>
+  <%= f.button :submit, 'Save changes' %>
+<% end %>

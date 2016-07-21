@@ -1,0 +1,33 @@
+<%= panel_view title: "Social Stream", icon: "fa-at", id: dom_id(social_stream) do %>
+  <%= simple_form_for social_stream, url: app_settings_social_stream_path(social_stream), remote: true, defaults: {wrapper: :if4} do |f| %>
+    <%= resource_error_messages! social_stream %>
+    <div class="form-group">
+      <%= f.simple_fields_for :menu_item do |mf| %>
+        <%= mf.input :display_name, placeholder: "Menu Label" %>
+        <%= mf.input :enabled, label: "Enabled",
+                               wrapper: :ib2,
+                               input_html: { id: "menu_item_enabled_#{mf.object.id}" }
+                               %>
+      <% end %>
+      <%= submit_tag "Save", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="notifications-list widget-notifications" id="stream-<%= social_stream.id %>-accounts">
+    <%= render partial: 'social_account', collection: social_stream.social_source_accounts %>
+  </div>
+
+  <%= link_to "Add account",
+              app_settings_social_stream_accounts_new_path(stream_id: social_stream.id),
+              remote: true,
+              class: "btn btn-primary"
+              %>
+
+  <%= link_to "Delete stream",
+              app_settings_social_stream_path(social_stream),
+              method: :delete,
+              remote: true,
+              data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this stream",
+              class: "btn btn-danger"
+              %>
+<% end %>

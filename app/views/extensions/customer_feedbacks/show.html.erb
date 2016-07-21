@@ -1,0 +1,12 @@
+<% content_for :title, "Customer Feedback" %>
+<% content_for :page_icon, 'fa-thumbs-up' %>
+
+<%= upgrade_message_for! CustomerFeedback %>
+
+<%= menu_settings_panel do %>
+  <%= render 'form' %>
+<% end %>
+
+<%= panel_view title: "Manage customer feedback", icon: "fa-thumbs-up" do %>
+  <%= render 'info_form' %>
+<% end %>

@@ -1,0 +1,134 @@
+<% content_for :title, "Sign in" %>
+<% content_for :body_class, "page-signin" %>
+<% content_for :container_class, "signin-container" %>
+
+<!-- Left side -->
+<div class="signin-info">
+  <%= link_to root_path, class: "logo" do %>
+    <%= image_tag('logo_40high.png', style: "margin-top: -5px;") %>
+  <% end %>
+   <!-- / .logo -->
+  <div class="slogan">
+    Beautiful. Powerful. <br />Mobile Apps Made Easy.
+  </div> <!-- / .slogan -->
+  <ul>
+    <li><i class="fa fa-cogs signin-icon"></i> Easily customize native apps</li>
+    <li><i class="fa fa-comments-o signin-icon"></i> Connect to your fans</li>
+    <li><i class="fa fa-link signin-icon"></i> Use your existing website</li>
+    <li><i class="fa fa-bullhorn signin-icon"></i> Build your app audience</li>
+  </ul> <!-- / Info list -->
+</div>
+<!-- / Left side -->
+
+<!-- Right side -->
+<div class="signin-form">
+
+  <!-- Form -->
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "signin-form_id"}) do |f| %>
+    <div class="signin-text">
+      <span>Sign In to your account</span>
+    </div> <!-- / .signin-text -->
+    <%= devise_error_messages! unless @from_password_reset %>
+    <div class="form-group w-icon">
+      <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email", id: "username_id" %>
+      <span class="fa fa-envelope signin-form-icon"></span>
+    </div> <!-- / Username -->
+
+    <div class="form-group w-icon">
+      <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "Password", id: "password_id" %>
+      <span class="fa fa-lock signin-form-icon"></span>
+    </div> <!-- / Password -->
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+        <label class="checkbox-inline">
+          <%= f.check_box :remember_me, class: "px" %>
+          <span class="lbl">Remember me</span>
+        </label>
+      </div>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.submit "SIGN IN", class: "signin-btn bg-primary" %>
+      <a href="#" class="forgot-password" id="forgot-password-link">Forgot your password?</a>
+    </div>
+  <% end %>
+  <!-- Form -->
+
+  <!-- Password reset form -->
+  <div class="password-reset-form" id="password-reset-form_id">
+    <div class="header">
+      <div class="signin-text">
+        <span>Password reset</span>
+        <div class="close">&times;</div>
+      </div> <!-- / .signin-text -->
+    </div> <!-- / .header -->
+
+    <!-- Form -->
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: "password-reset-form_id" }) do |f| %>
+      <%= devise_error_messages! if @from_password_reset %>
+
+      <div class="form-group w-icon">
+        <%= f.email_field :email, autofocus: true, class: "form-control input-lg",
+        id: "p_email_id", placeholder: "Enter your email" %>
+        <span class="fa fa-envelope signin-form-icon"></span>
+      </div> <!-- / Email -->
+
+      <div class="form-actions">
+        <%= f.submit "SEND PASSWORD RESET LINK", class: "signin-btn bg-primary" %>
+      </div>
+    <% end %>
+    <!-- / Form -->
+  </div>
+  <!-- / Password reset form -->
+</div>
+<!-- Right side -->
+
+<% content_for :after_container do %>
+  <div class="not-a-member">
+    Not a customer? <%= link_to "Sign up now", new_registration_path(resource_name) %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  <% if @from_password_reset %>
+    $('#password-reset-form_id').fadeIn(0);
+  <% end %>
+  $(document).ready(function() {
+    var $ph  = $('#page-signin-bg'),
+        $img = $ph.find('> img');
+
+    $(window).on('resize', function () {
+      $img.attr('style', '');
+      if ($img.height() < $ph.height()) {
+        $img.css({
+          height: '100%',
+          width: 'auto'
+        });
+      }
+    });
+
+  // Show/Hide password reset form on click
+    $('#forgot-password-link').click(function () {
+      $('#password-reset-form_id').fadeIn(400);
+      return false;
+    });
+    $('#password-reset-form_id .close').click(function () {
+      $('#password-reset-form_id').fadeOut(400);
+      return false;
+    });
+
+    $("#signin-form_id").validate({ focusInvalid: true, errorPlacement: function () {} });
+
+    // Validate username
+    $("#username_id").rules("add", {
+      required: true,
+      email: true
+    });
+
+    // Validate password
+    $("#password_id").rules("add", {
+      required: true,
+    });
+  });
+</script>

@@ -1,0 +1,5 @@
+<%= simple_form_for @contact_us_info, url: extensions_contact_us_path, method: :patch, remote: true, html: {id: "contact-us-menu-form" } do |f| %>
+  <%= resource_error_messages! @contact_us_info %>
+  <%= render 'shared/menu_item_fields', form: f %>
+  <%= f.button :submit, "Save changes" %>
+<% end %>

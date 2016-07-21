@@ -1,0 +1,7 @@
+<%= div_for(location, class: "notification", style: "padding: 15px;") do %>
+  <div>
+    <%= location.name %> - 
+    <%= link_to 'show in maps', location.google_maps_link, target: "blank" %>
+  </div>
+  <%= link_to '', extensions_contact_us_location_path(location), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this location?", class: "notification-icon fa fa-times bg-default" %>  
+<% end %>

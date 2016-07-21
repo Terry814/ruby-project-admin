@@ -1,0 +1,20 @@
+<div class="text-center">
+  <% Rails.configuration.appease_plans.each do |plan, info| %>
+    <span class="padding-sm-hr">
+      <% button_title = "#{info.name}: $#{info.price}/mo" %>
+      <% if current_user.current_package == plan %>
+        <button class="btn btn-success"><%= button_title %> <i class="fa fa-check"></i></button>
+      <% else %>
+        <%= link_to button_title,
+                    accounts_appease_packages_path(package: User.current_packages[plan],
+                                                   redirect_to: new_user_wizard_step_two_path),
+                    method: :patch, remote: true, class: "btn btn-info" %>
+      <% end %>
+    </span>
+  <% end %>
+</div>
+<br>
+<% Rails.configuration.appease_plans.each do |plan, info| %>
+  <%= content_tag :p, "#{info.name}: #{info.description}" %>
+<% end %>
+<%= link_to 'Done', new_user_wizard_step_three_path(from_plans: true), remote: true, class: "btn btn-success" %>

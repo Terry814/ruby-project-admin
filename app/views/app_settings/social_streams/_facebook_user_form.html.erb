@@ -1,0 +1,10 @@
+<%= simple_form_for [@social_stream, @new_source_account], url: app_settings_social_stream_accounts_path, remote: true, html: {id: 'facebook-user-form'} do |f| %>
+  <%= f.input :service, input_html: {value: 'facebook'}, as: :hidden %>
+  <%= f.input :form_id, input_html: {value: 'facebook-user-form'}, as: :hidden %>
+  
+  <%= resource_error_messages! @new_source_account %> 
+  <div class="form-group">
+    <%= f.input :username, placeholder: "Page", required: true, wrapper: :if5 %>
+    <%= submit_tag "Add page", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title><%= page_title %></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'themes.min', media: 'all' %>
+<%= stylesheet_link_tag 'pages.min', media: 'all' %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+<script src="https://checkout.stripe.com/v2/checkout.js"></script>
+<!--[if lt IE 9]>
+  <%= javascript_include_tag 'ie.js' %>
+<![endif]-->
+<%= csrf_meta_tags %>

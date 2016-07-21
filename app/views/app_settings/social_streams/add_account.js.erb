@@ -1,0 +1,7 @@
+<% if @new_source_account.errors.any? %>
+  <% form_id = params[:social_source_account][:form_id] %>
+  $('#<%= form_id %>').replaceWith("<%=j render form_id.underscore %>");
+<% else %>
+  $('#new-social-source-modal').modal('hide');
+  $('#stream-<%= @social_stream.id %>-accounts').append("<%=j render 'social_account', social_account: @new_source_account %>")
+<% end %>

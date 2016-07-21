@@ -1,0 +1,73 @@
+<div id="main-menu" role="navigation">
+  <div id="main-menu-inner">
+    <ul class="navigation">
+
+      <% if current_user.plain? && current_user.sign_in_count == 1 %>
+        <%= menu_item 'Getting Started', new_user_wizard_path, 'fa-magic',
+                        {id: "new-user-wizard-menu-item"} %>
+      <% end %> <!-- Getting Started -->
+
+      <%= menu_item 'App Status', home_path_with_company_name, 'fa-tasks' do %>
+      <% end %>
+
+      <%= menu_group 'App Marketing', 'fa-bullhorn' do %>
+        <%= submenu 'Auto Post', app_marketing_autopost_path, 'fa-heart' %>
+        <%= submenu 'Auto Like', app_marketing_autolike_path, 'fa-thumbs-up' %>
+        <%= submenu 'One Time Push', app_marketing_one_time_push_path, 'fa-comment' %>
+        <%# submenu 'Geo Fenced Push', app_marketing_geo_fenced_pushs_path, 'fa-map-marker' %>
+      <% end %>
+
+      <%= menu_group 'App Settings', 'fa-cog' do %>
+        <%= submenu 'Menu Setup', app_settings_menu_path, 'fa-bars' %>
+        <%= submenu 'Menu Cover Image', app_settings_menu_cover_image_path, 'fa-picture-o' %>
+        <%= submenu 'Menu Links', app_settings_web_links_path, 'fa-link' %>
+        <%= submenu 'Social Stream', app_settings_social_streams_path, 'fa-comments-o' %>
+        <%= submenu 'Colors', app_settings_colors_path, 'fa-tint' %>
+      <% end %>
+
+      <%= menu_group 'App Store Settings', 'fa-rocket' do %>
+        <%= submenu 'Description', stores_settings_description_path, 'fa-tags' %>
+        <%= submenu 'Icon', stores_settings_app_icon_path, 'fa-bookmark' %>
+        <%= submenu 'Screenshots', stores_settings_screenshots_path, 'fa-camera-retro' %>
+      <% end %>
+
+      <%= menu_group 'Connections', 'fa-exchange' do %>
+        <%= submenu 'Facebook', app_settings_path(:facebook), 'fa-facebook' %>
+        <%= submenu 'Instagram', app_settings_path(:instagram), 'fa-instagram' %>
+        <%= submenu 'Twitter', app_settings_path(:twitter), 'fa-twitter' %>
+      <% end %>
+
+      <%= menu_group 'Extensions', 'fa-bolt' do %>
+        <%= submenu 'Coupons', extensions_coupons_path, 'fa-money' %>
+        <%= submenu 'Contact Us', extensions_contact_us_path, 'fa-map-marker' %>
+        <%= submenu 'PDF Viewer', extensions_pdf_files_path, 'fa-file-o' %>
+        <%= submenu 'E-Commerce', extensions_shopify_path, 'fa-shopping-cart' %>
+        <%= submenu 'OpenTable', extensions_opentable_path, 'fa-coffee' %>
+      <% end %>
+
+      <%= menu_group 'Your Account', 'fa-credit-card' do %>
+        <%= submenu 'AppEase Packages', accounts_appease_packages_path, 'fa-th-large' %>
+        <%= submenu 'Billing Info', accounts_billing_info_path, 'fa-dollar' %>
+        <%= submenu 'Billing History', accounts_billing_history_path, 'fa-folder-open-o' %>
+        <%= submenu 'Account Settings', edit_user_registration_path, 'fa-wrench' %>
+      <% end %>
+
+      <% if can? :read, :admin_page %>
+        <%= menu_group 'Admin page - Users', 'fa-users' do %>
+          <%= submenu 'Customers', admin_users_customers_path, 'fa-dollar' %>
+          <%= submenu 'Prospects', admin_users_prospects_path, 'fa-eye' %>
+          <%= submenu 'Triers', admin_users_triers_path, 'fa-question' %>
+          <%= submenu 'Cancelled', admin_users_canceled_path, 'fa-frown-o' %>
+          <%= submenu 'Unclaimed', admin_users_unclaimed_path, 'fa-user-times' %>
+        <% end %>
+
+        <%= submenu 'Ad placements', admin_ad_placement_ids_path, 'fa-tags' %>
+
+        <%= submenu 'Push certificates', admin_push_settings_path, 'fa-certificate' %>
+
+        <%= no_pjax_menu_item 'Add new user', quick_start_path, 'fa-user-plus' %>
+      <% end %>
+
+    </ul> <!-- / .navigation -->
+  </div> <!-- / #main-menu-inner -->
+</div> <!-- / #main-menu -->

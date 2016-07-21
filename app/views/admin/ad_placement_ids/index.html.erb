@@ -1,0 +1,19 @@
+<% content_for :title, "Ad Placements" %>
+<% content_for :page_icon, 'fa-tags' %>
+<% content_for :body_class, 'admin' %>
+
+<%= panel_view title: "Enter the new placement id", icon: "fa-tag" do %>
+  <%= render 'form', ad_placement_id: @new_placement_id %>
+<% end %>
+
+<%= panel_view title: "iOS ad placements", icon: "fa-tags", class: "widget-notifications", body_class: "padding-sm" do %>
+  <div class="notifications-list" id="ios-placement-list">
+    <%= render partial: 'ad_placement_id', collection: @placement_ids.to_a.select(&:ios?) %>
+  </div>
+<% end %>
+
+<%= panel_view title: "Android ad placements", icon: "fa-tags", class: "widget-notifications", body_class: "padding-sm" do %>
+  <div class="notifications-list" id="android-placement-list">
+    <%= render partial: 'ad_placement_id', collection: @placement_ids.to_a.select(&:android?) %>
+  </div>
+<% end %>

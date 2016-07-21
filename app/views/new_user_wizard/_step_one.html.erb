@@ -1,0 +1,8 @@
+Greetings! Setting up your app is simple and should only take a few minutes. Enter your company info for your main location below. We'll use this selection to help automate some parts of your app creation. 
+<br>
+<br>
+<%= render 'company_info_form' %>
+<div id="companies-form">
+  <%= render 'companies_form' if @companies %>
+</div>
+<%= link_to 'Skip this step', new_user_wizard_step_two_path(from_skip: true), remote: true, class: "pull-right" %>

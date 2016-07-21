@@ -1,0 +1,8 @@
+$('#contact-us-menu-form').replaceWith("<%=j render 'form' %>");
+<% if @new_location.errors.any? %>
+  $('#<%= dom_id @new_location %>').replaceWith("<%=j render 'location_form', location: @new_location %>");
+<% else %>
+  <% new_location = build_new_location %>
+  $('#<%= dom_id new_location %>').replaceWith("<%=j render 'location_form', location: new_location %>");
+  $('#locations').append("<%=j render 'location', location: @new_location %>");
+<% end %>

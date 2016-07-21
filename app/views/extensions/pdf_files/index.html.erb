@@ -1,0 +1,14 @@
+<% content_for :title, "PDF Viewer" %>
+<% content_for :page_icon, 'fa-file-o' %>
+
+<%= upgrade_message_for! PdfFileItem %>
+
+<%= panel_view title: "Upload your PDF and supply a label to show in your menu", icon: "fa-file-o" do %>
+  <%= render 'form', pdf_file: @new_pdf_file %>
+<% end %>
+
+<%= panel_view title: "Active PDF documents", icon: "fa-file-o", class: "widget-notifications", body_class: "padding-sm" do %>
+  <div class="notifications-list" id="pdf-files">
+    <%= render partial: 'pdf_file', collection: @pdf_files %>
+  </div>
+<% end %>

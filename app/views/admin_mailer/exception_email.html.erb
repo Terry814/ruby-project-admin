@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    Hello, exception raised in app. <br>
+    <% if @context.present? %>
+      <p>
+        Context:<br>
+        <%= @context %>
+      </p>
+    <% end %>
+    <% if @user.present? %>
+      <p>
+        Related to user:<br>
+        <%= @user.email %>
+      </p>
+    <% end %>
+    <p>
+      Inspect:<br>
+      <%= @e.inspect %>
+    </p>
+    <p>
+      Backtrace:<br>
+      <%= @e.backtrace %>
+    </p>
+
+  </body>
+</html>

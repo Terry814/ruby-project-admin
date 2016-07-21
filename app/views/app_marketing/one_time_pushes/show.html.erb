@@ -1,0 +1,8 @@
+<% content_for :title, "One Time Push" %>
+<% content_for :page_icon, 'fa-comment' %>
+
+<%= upgrade_message_for! :push_notifications %>
+
+<%= panel_view title: "Send a one-time push notification", icon: "fa-bullhorn" do %>
+  <%= render 'form' %>
+<% end %>

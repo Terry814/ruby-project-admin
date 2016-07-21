@@ -1,0 +1,5 @@
+<%= simple_form_for @coupons, url: extensions_coupons_path, method: :patch, remote: true, html: {id: "coupons-menu-form" } do |f| %>
+  <%= resource_error_messages! @coupons %>
+  <%= render 'shared/menu_item_fields', form: f %>
+  <%= f.button :submit, "Save changes" %>
+<% end %>

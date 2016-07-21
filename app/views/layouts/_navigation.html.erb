@@ -1,0 +1,49 @@
+<div id="main-navbar" class="navbar navbar-default" role="navigation">
+  <% only_logo = false if only_logo.nil? %>
+
+  <% if only_logo %>
+    <%= link_to root_path do %>
+      <%= image_tag('logo_40high.png', alt: "AppEase", style: "padding-left: 50px; padding-top: 13px; height: 40px;") %>
+    <% end %>
+  <% else %>
+    <!-- Main menu toggle -->
+    <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
+
+    <div class="navbar-inner">
+      <!-- Main navbar header -->
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div>
+          <%= image_tag('logo_40high.png', alt: "AppEase", style: "padding-left: 5px; padding-top: 13px; height: 40px;") %>
+        </div>
+
+        <!-- Main navbar toggle -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>
+      </div> <!-- / .navbar-header -->
+
+      <div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
+        <div class="right clearfix">
+          <ul class="nav navbar-nav pull-right right-navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                <span><%= current_user.company_name %></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="mailto:support@getappease.com"><i class="dropdown-icon fa fa-comments-o"></i>&nbsp;&nbsp;Contact Support</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to(destroy_user_session_path, method: :delete) do %>
+                    <i class='dropdown-icon fa fa-power-off'></i>&nbsp;&nbsp;Log Out
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul> <!-- / .navbar-nav -->
+        </div>
+      </div> <!-- / #main-navbar-collapse -->
+      
+    </div> <!-- / .navbar-inner -->
+  <% end %>
+</div> <!-- / #main-navbar -->

@@ -1,0 +1,15 @@
+-
+  name: "Full Service Starter Pack"
+  description: "Full setup plus 10 icons to choose from. We do it all."
+  price: 599.00
+  id: starter_pack
+-
+  name: "Full Service Setup"
+  description: "Let AppEase provide full service setup of your initial apps."
+  price: 299.00
+  id: service_setup
+-
+  name: "Icon Creation"
+  description: "Let AppEase create 10 icons for you to choose from, based on your buisness identity."
+  price: 199.00
+  id: icon_creation

@@ -1,0 +1,15 @@
+<div id="instagram-connection">
+  <% if identity.persisted? %>
+  	Status: Connected
+
+    <div class="padding-sm">
+      <%= link_to "Disconnect from Instagram", app_settings_connections_instagram_path, method: :delete, remote: true, class: 'btn btn-lg btn-primary' %>
+    </div>
+  <% else %>
+    Status: Not Connected
+
+    <div class="padding-sm">
+      <%= link_to "Connect to Instagram", app_settings_connections_instagram_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  <% end %>
+</div>

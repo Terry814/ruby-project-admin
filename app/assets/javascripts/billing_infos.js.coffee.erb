@@ -1,0 +1,22 @@
+$.appease.controller 'billing_infos', ->
+  $.appease.setupAndBindToAjax '#stripe-button', ->
+    @click ->
+      token = (res) ->
+        $input = $('<input type=hidden name=stripeToken />').val(res.id)
+        $('#billing-info-form').append($input).submit()
+        return
+
+      StripeCheckout.open
+        key:          '<%= Rails.configuration.stripe[:publishable_key] %>'
+        amount:       0
+        name:         'Your billing info'
+        description:  'Charges begin when you publish.'
+        panelLabel:   $(@).data('label')
+        image:        "<%= image_url 'app_icon_sq.png' %>"
+        allowRememberMe: false
+        token:        token
+
+      return false
+    return
+  $.appease.setupAndBindToAjax 'form#coupon-form', $.fn.validate
+  return

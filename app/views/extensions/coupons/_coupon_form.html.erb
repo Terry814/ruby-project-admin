@@ -1,0 +1,11 @@
+<%= simple_form_for coupon_info, url: extensions_coupons_coupon_infos_path, remote: true do |f| %>
+  <%= resource_error_messages! coupon_info %>
+  <%= f.input :title, placeholder: "Coupon title", wrapper: :field4 %>
+  <%= f.input :description, placeholder: "Coupon description", wrapper: :field8 %>
+  <%= f.input :image, wrapper: :field8 %>
+  <%= f.input :expiry_date, wrapper: :ig4, wrapper_html: {id: "expiry-date-input"} do %>
+    <%= f.input_field :expiry_date, placeholder: "Expiry date", as: :string, class: "form-control" %>
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+  <% end %>
+  <%= f.button :submit, "Create coupon" %>
+<% end %>

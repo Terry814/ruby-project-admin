@@ -1,0 +1,5 @@
+<div class="<%= controller_name %><%= content_class(:body_class) %>">
+  <title><%= page_title %></title>
+  <%= render partial: "shared/flash_messages", flash: flash %>
+  <%= yield %>
+</div>

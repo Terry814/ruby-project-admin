@@ -1,0 +1,7 @@
+<% if @new_social_stream.errors.any? %>
+  $('#<%= dom_id(@new_social_stream) %>').replaceWith("<%=j render 'form', social_stream: @new_social_stream %>");
+<% else %>
+  <% new_social_stream = build_social_stream %>
+  $('#<%= dom_id(new_social_stream) %>').replaceWith("<%=j render 'form', social_stream: new_social_stream %>");
+  $('#social-streams').append("<%=j render 'social_stream', social_stream: @new_social_stream %>");
+<% end %>

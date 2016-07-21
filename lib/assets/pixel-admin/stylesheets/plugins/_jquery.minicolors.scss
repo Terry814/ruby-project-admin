@@ -1,0 +1,64 @@
+//
+// Plugins / jQuery.Minicolors
+//
+// Version: 2.1.1
+//
+// --------------------------------------------------
+
+
+// Base styles
+//
+
+.minicolors-swatch {
+	position: absolute;
+	vertical-align: middle;
+	cursor: text;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	border: none;
+}
+
+.minicolors-swatch-color {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+// Panel
+//
+
+.modal .minicolors-panel {
+	z-index: $zindex-datepicker-modal;
+}
+
+// Bootstrap theme
+//
+
+.minicolors-theme-bootstrap {
+	.minicolors-swatch {
+		top: 3px;
+		left: 3px;
+		width: 26px;
+		height: 26px;
+		bottom: 3px;
+	}
+
+	.minicolors-input {
+		padding-left: 40px;
+	}
+
+	&.minicolors-position-right {
+		.minicolors-swatch {
+			left: auto;
+			right: 3px;
+		}
+
+		.minicolors-input {
+			padding-right: 40px;
+			padding-left: 12px;
+		}
+	}
+}

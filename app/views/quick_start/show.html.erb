@@ -1,0 +1,49 @@
+<div class="col-md-8 col-md-offset-2">
+<div class="row">
+<%= simple_form_for :new_user, url: quick_start_path, method: :post, remote: :true,
+    defaults: {wrapper: :field6}, html: {id: 'quick-start-wizard'} do |f| %>
+
+  <% admin_mode = signed_in? && current_user.admin? %>
+
+  <h1 class="section-title">Website URL.</h1>
+  <section>
+    <h2>Great Name!</h2>
+    <h4>We make part of your app using content from your site. Tell us where to find it!</h4>
+
+    <p>Step 2 of 4: Enter the URL of your website</p>
+
+    <% if admin_mode %>
+      <%= f.input :app_name, placeholder: "App name", input_html: {value: params[:app_name]}, required: false %>
+    <% end %>
+
+    <%= f.input :url, as: :url, placeholder: "http://yourwebsite.com", input_html: {id: 'appease-url-field'} %>
+    <%= link_to "Save Your URL & Continue", quick_start_links_path, class: 'btn btn-default hidden', id: 'appease-url-link' %>
+  </section>
+
+  <h1 class="section-title">User form.</h1>
+  <section>
+    <h2>We’re building your app!</h2>
+    <h4>Create an account so you can manage your app. We’ll also use the contact info below to send you a link to see your app on your phone or tablet.</h4>
+
+    <p>Step 4 of 4: Create your account</p>
+
+    <%= f.simple_fields_for :user do |uf| %>
+      <%= uf.input :full_name, placeholder: "Your Full Name" %>
+      <%= uf.input :company_name, placeholder: "Company Name" %>
+      <%= uf.input :email, as: :email, placeholder: "Your Email Address" %>
+      <%= uf.input :phone_number, placeholder: "Mobile Number", hint: "We'll text you a link to preview your app" %>
+      <%= uf.input :password, placeholder: "Create a Password", required: !admin_mode %>
+      <%= uf.input :password_confirmation, placeholder: "Confirm Password", required: !admin_mode %>
+      <% if admin_mode %>
+        <div class="form-group">
+          <%= uf.input :skip_intercom, as: :boolean, label: "Skip intercom user creation (Not reccomended)", wrapper: :ib6 %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= f.button :submit, 'Save & Send Me My App Now!' %>
+  </section>
+
+<% end %>
+</div>
+</div>

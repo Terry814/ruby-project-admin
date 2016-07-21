@@ -1,0 +1,16 @@
+<% content_for :title, "Connections" %>
+<% content_for :page_icon, 'fa-exchange' %>
+
+<%= upgrade_message_for! SocialStream %>
+
+<%= panel_view title: "Connect to Facebook", icon: "fa-icon-facebook" do %>
+  <%= render 'facebook_connection', identity: @facebook_identity %>
+<% end %>
+
+<%= panel_view title: "Connect to Instagram", icon: "fa-icon-instagram" do %>
+  <%= render 'instagram_connection', identity: @instagram_identity %>
+<% end %>
+
+<%= panel_view title: "Connect to Twitter", icon: "fa-icon-twitter" do %>
+  <%= render 'twitter_connection', identity: @twitter_identity %>
+<% end %>

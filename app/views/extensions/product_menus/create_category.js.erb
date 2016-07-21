@@ -1,0 +1,8 @@
+$('#product-menu-form').replaceWith("<%=j render 'form' %>");
+<% if @new_category.errors.any? %>
+  $('#category-form').replaceWith("<%=j render 'category_form', cat: @new_category %>");
+<% else %>
+  $('#category-form').replaceWith("<%=j render 'category_form', cat: build_new_category %>");
+  $('#categories').html("<%=j render partial: 'category', collection: @product_menu.categories.all %>");
+  $('#menu-item-form').replaceWith("<%=j render 'menu_item_form', item: @new_menu_item %>");
+<% end %>

@@ -1,0 +1,18 @@
+<%= simple_form_for @autolike, url: app_marketing_autolike_path, method: :patch, remote: true, wrapper: :horizontal_form_with_labels, html: { id: 'autolike-form' } do |f| %>
+  <%= resource_error_messages! @autolike %>
+
+  <%= f.input :enabled, label: "Enable Autolike" %>
+
+  <div class="form-group">
+    <label for="autolike_hashtags" class="col-sm-2 control-label">Hashtags</label>
+    <div class="col-sm-4">
+      <% 0.upto(4) do |idx| %>
+        <input type="text" name="autolike[hashtags][]"
+          value="<%= @autolike.hashtags[idx] %>" class="form-control"><br>
+      <% end %>
+        <p class="help-block">We'll use up to 5 hashtags to find popular posts to like.</p>
+    </div>
+  </div>
+
+  <%= f.button :submit, "Save settings", class: "col-sm-offset-2" %>
+<% end %>

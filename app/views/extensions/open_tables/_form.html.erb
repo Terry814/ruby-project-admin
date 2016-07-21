@@ -1,0 +1,16 @@
+<%= simple_form_for @opentable, url: extensions_opentable_path, method: :patch, remote: true,
+  html: {id: "opentable-form"} do |f| %>
+  <%= resource_error_messages! @opentable %>
+
+  <%= f.simple_fields_for :menu_item do |mf| %>
+    <div class="form-group">
+      <%= f.input :url, placeholder: "http://", wrapper: :if7 %>
+      <%= mf.input :display_name, placeholder: "Menu Label", wrapper: :if4 %>
+    </div>
+    <div class="form-group">
+      <%= mf.input :enabled, label: "Enable this extension", wrapper: :ib4 %>
+    </div>
+  <% end %>
+
+  <%= f.button :submit, "Save" %>
+<% end %>

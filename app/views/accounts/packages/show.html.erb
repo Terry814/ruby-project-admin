@@ -1,0 +1,25 @@
+<% content_for :body_class, "page-pricing" %>
+<% content_for :title, "Packages" %>
+
+<div class="page-pricing-header">
+  <%= image_tag "pricingbg.jpg", style: "height: 100%; width: auto;" %>
+  <div class="bg-overlay" style="background: #8f7c5f;"></div>
+  <div class="page-pricing-header-content">
+    <h1 class="page-title"><strong>Plans</strong> &amp; <strong>Pricing</strong></h1>
+    <div class="slogan">
+      <h4>Pay as you go. No startup costs. Cancel anytime.</h4>
+    </div>
+  </div>
+</div>
+
+<div class="plans-panel" style="max-width: 1000px;">
+  <div class="plans-container" id="plan-columns">
+    <%= render 'plans' %>
+  </div>
+</div>
+
+<div class="trial">
+  Free to try, no obligation, no credit card required.
+  <br>
+  You will be able to preview your app before you publish to the app store, and you won't be charged until your first app is published.
+</div>

@@ -1,0 +1,22 @@
+<% content_for :title, "Menu Setup" %>
+<% content_for :page_icon, 'fa-bars' %>
+
+<%= panel_view title: "Drag each section to manage your menu order", icon: "fa-bars" do %>
+  <%= simple_form_for @app_info, url: app_settings_menu_path, method: :patch, remote: true, wrapper: :horizontal_form_with_labels do |f| %>
+
+    <% if @menu_items.any? %>
+      <%= f.input :app_home, collection: @menu_items, label_method: :display_name, selected: @app_info.app_home.id %>
+    <% end %>
+
+    <div class="padding-xs-hr">
+      <div id="menu-items-sort" class="form-group">
+        <%= div_for(@menu_items) do |menu| %>
+          <%= content_tag :h3, menu.display_name, class: 'menu-item' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="hidden-menu-items-input"></div>
+    <%= f.button :submit, "Save changes" %>
+  <% end %>
+<% end %>

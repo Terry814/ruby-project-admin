@@ -1,0 +1,14 @@
+<%= simple_form_for @shopify, url: extensions_shopify_path, method: :patch, remote: true,
+  html: {id: "shopify-form"} do |f| %>
+  <%= resource_error_messages! @shopify %>
+  <%= f.simple_fields_for :menu_item do |mf| %>
+    <div class="form-group">
+      <%= f.input :url, placeholder: "http://", wrapper: :if7 %>
+      <%= mf.input :display_name, placeholder: "Menu Label", wrapper: :if4 %>
+    </div>
+    <div class="form-group">
+      <%= mf.input :enabled, label: "Enable this extension", wrapper: :ib4 %>
+    </div>
+  <% end %>
+  <%= f.button :submit, "Save" %>
+<% end %>

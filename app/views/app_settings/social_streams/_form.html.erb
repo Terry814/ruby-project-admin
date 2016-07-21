@@ -1,0 +1,5 @@
+<%= simple_form_for social_stream, url: app_settings_social_streams_path, remote: true do |f| %>
+  <%= resource_error_messages! social_stream %>
+  <%= render 'shared/menu_item_fields', form: f %>
+  <%= f.button :submit, "Add stream" %>
+<% end %>

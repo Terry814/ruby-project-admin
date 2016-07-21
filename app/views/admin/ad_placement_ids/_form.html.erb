@@ -1,0 +1,8 @@
+<%= simple_form_for ad_placement_id, url: admin_ad_placement_ids_path, remote: true do |f| %>
+  <%= resource_error_messages! ad_placement_id %>
+  <div class="form-group">
+    <%= f.input :placement_id, wrapper: :if7 %>
+    <%= f.input :platform, collection: AdPlacementId.platforms.keys, wrapper: :if3, include_blank: false %>
+  </div>
+  <%= f.button :submit, "Create Placement" %>
+<% end %>

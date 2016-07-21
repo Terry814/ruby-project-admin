@@ -1,0 +1,19 @@
+<% content_for :title, "Contact Us" %>
+<% content_for :page_icon, 'fa-map-marker' %>
+
+<%= upgrade_message_for! ContactUsInfo %>
+
+<%= menu_settings_panel do %>
+  <%= render 'form' %>
+<% end %>
+
+<%= panel_view title: "Create a location profile", icon: "fa-map-marker" do %>
+  <%= render 'location_form', location: @new_location %>
+<% end %>
+
+<%= panel_view title: "Active locations", icon: "fa-map-marker",
+               class: "widget-notifications", body_class: "padding-sm" do %>
+  <div class="notification-list" id="locations">
+    <%= render partial: 'location', collection: @contact_us_info.contact_locations.all %>
+  </div>
+<% end %>

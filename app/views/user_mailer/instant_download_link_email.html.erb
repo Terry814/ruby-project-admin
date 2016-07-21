@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <% if @user.sign_up_method == 'admin' %>
+    <p>Hello!</p>
+
+    <p>I noticed you don't have a mobile app for <%= @app_name %> so... I made you one! You can check it out on your Apple or Google phone/tablet by clicking  <a href="<%= @download_link %>">here</a> (best to click directly from your phone).  We specialize in making beautiful mobile apps to help extend your reach from your website onto the mobile devices of your biggest fans. Check out the app we made for you and you'll see a glimpse of what's possible with AppEase, our simple tool for making a great mobile app.</p>
+
+    <p>Soon I'll send you an email that has a way for you to see how our platform works. Enjoy!</p>
+
+    <p>-Cheers,<br />Patty</p>
+  <% else %>
+    <p>Your app is ready to download! Just open <a href="<%= @download_link %>">this link</a> on your iOS device and you'll be able to see the app you created at <a href="http://getappease.com">getappease.com</a>.  Any changes you make to your app can be seen instantly in your preview app. Once you're happy with your app setup, login at <a href="http://app.getappease.com/sign-in">getappease.com</a> and click Publish to move your app into the app stores.</p>
+
+    <p>Enjoy!</p>
+
+    <p>- The AppEase Team</p>
+  <% end %>
+  </body>
+</html>

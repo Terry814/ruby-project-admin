@@ -1,0 +1,8 @@
+<% content_for :title, "Shopify" %>
+<% content_for :page_icon, 'fa-shopping-cart' %>
+
+<%= upgrade_message_for! Shopify %>
+
+<%= panel_view title: "Enter your Shopify cart url to enable this extension", icon: "fa-link" do %>
+  <%= render 'form' %>
+<% end %>

@@ -1,0 +1,29 @@
+<% content_for :title, "Billing History" %>
+<% content_for :page_icon, 'fa-folder-open-o' %>
+
+<%= panel_view title: "Billing History", icon: "fa-folder-open-o" do %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Invoice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= invoice.date %></td>
+          <td><%= invoice.description %></td>
+          <td><%= number_to_currency invoice.total %></td>
+          <td>
+            <%= link_to accounts_billing_history_invoice_path(invoice), class: "btn btn-xs" do %>
+              <i class="fa fa-book text-success"></i> View invoice
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

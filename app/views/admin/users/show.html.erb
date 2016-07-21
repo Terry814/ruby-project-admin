@@ -1,0 +1,73 @@
+<% content_for :title, "Admin - Users" %>
+<% content_for :page_icon, 'fa-users' %>
+<% content_for :body_class, 'admin' %>
+
+<%= panel_view title: action_name.capitalize, icon: "fa-users",
+         title_label: "#{@filtered_count} of #{User.count}",
+         title_label_class: "label-info",
+         footer: paginate(@users) do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><i class="panel-title-icon fa fa-hospital-o"></i></th>
+        <th><i class="panel-title-icon fa fa-file-text"></i></th>
+        <th><i class="panel-title-icon fa fa-tasks"></i></th>
+        <th><i class="panel-title-icon fa fa-picture-o"></i></th>
+        <th><i class="panel-title-icon fa fa-rocket"></i></th>
+        <th><i class="panel-title-icon fa fa-th-large"></i></th>
+        <% if @customer %>
+          <th><i class="panel-title-icon fa fa-apple"></i></th>
+          <th><i class="panel-title-icon fa fa-android"></i></th>
+          <th><i class="panel-title-icon fa fa-cloud-download"></i></th>
+          <th><i class="panel-title-icon fa fa-times"></i></th>
+        <% end %>
+        <th><i class="panel-title-icon fa fa-tags"></i></th>
+        <th><i class="panel-title-icon fa fa-user-times"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user.email, admin_become_path(user_id: user.id) %>
+          </td>
+          <td>
+            <%= json_config_link user %>
+          </td>
+          <td>
+            <%= user_task_completence_check user %>
+          </td>
+          <td>
+            <%= app_icon_uploaded_check user %>
+          </td>
+          <td>
+            <%= user_has_used_preview_app_check user %>
+          </td>
+          <td>
+            <%= user.current_package.upcase %>
+          </td>
+          <% if @customer %>
+            <td>
+              <%= user_has_live_ios_app_check user %>
+            </td>
+            <td>
+              <%= user_has_live_android_app_check user %>
+            </td>
+            <td>
+              <%= total_installs_count user %>
+            </td>
+            <td>
+              <%= stop_user_subscription user %>
+            </td>
+          <% end %>
+          <td>
+            <%= ad_frequency_selector user %>
+          </td>
+          <td>
+            <%= destroy_user user %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

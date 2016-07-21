@@ -1,0 +1,14 @@
+<%= simple_form_for @app_stores_info, url: stores_settings_description_android_path, method: :patch, remote: true, html: { id: "android-form" } do |f| %>
+  <%= resource_error_messages! @app_stores_info if @app_stores_info.updating_android %>
+  <div class="form-group">
+    <%= f.input :android_app_name, placeholder: "App name", wrapper: :if4, required: true %>
+    <%= f.input :android_icon_label, placeholder: "App icon", wrapper: :if4, required: true %>
+  </div>
+  <div class="form-group">
+    <% android_cats = AppStoresInfo::PLAY_MARKET_CATEGORIES.map { |k, v| [v, k]} %>
+    <%= f.input :android_first_category, collection: android_cats, prompt: 'Play Market Primary Category', wrapper: :if4, required: true %>
+    <%= f.input :android_second_category, collection: android_cats, prompt: 'Play Market Secondary Category', wrapper: :if4 %>
+  </div>
+  <%= f.input :android_description, placeholder: "App description", input_html: {rows: 5}, required: true %>
+  <%= f.button :submit, 'Save changes' %>
+<% end %>

@@ -1,0 +1,23 @@
+.menu_cover_images {
+  .dz-outer-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 46%;
+  }
+  .dropzone-box {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    padding: 0;
+    min-height: 20px;
+  }
+  .dz-preview {
+    width: auto;
+  }
+  .dz-thumbnail {
+    width: auto;
+    height: auto;
+  }
+  .dz-thumbnail > img {
+    max-height: none;
+  }
+}

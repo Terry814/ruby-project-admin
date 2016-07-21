@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+<head>
+  <%= render 'layouts/head' %>
+</head>
+
+<%= css_class = switched_user? ? 'switched-user' : 'original-user' %>
+<body class="theme-clean main-menu-animated <%= css_class %>">
+
+  <div id="main-wrapper">
+    <% from_app = request.user_agent =~ /appease/i %>
+    <% unless from_app %>
+      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/menu' %>
+    <% end %>
+
+  <% if from_app %>
+    <div id="content-wrapper" style="padding: 18px;" data-pjax-container>
+  <% else %>
+    <div id="content-wrapper" data-pjax-container>
+  <% end %>
+      <%= render file: 'layouts/application_container' %>
+    </div> <!-- / #content-wrapper -->
+    <div id="main-menu-bg"></div>
+  </div> <!-- / #main-wrapper -->
+
+  <%= intercom_script_tag %>
+  <%= render 'layouts/analytics' %>
+
+</body>
+</html>

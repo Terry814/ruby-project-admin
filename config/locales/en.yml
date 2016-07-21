@@ -1,0 +1,184 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    errors:
+      models:
+        coupon_info:
+          attributes:
+            expiry_date:
+              not_a_date: "is not a date"
+              after: "should be in future"
+        product_menu_item:
+          attributes:
+            product_menu_category:
+              existence: "is not found"
+        social_source_account:
+          attributes:
+            service_user_id:
+              blank: "not found"
+              taken: "already added"
+        geo_message:
+          attributes:
+            start_time:
+              after_or_equal_to: "should be in future"
+            end_time:
+              after_or_equal_to: "should be in future"
+              after: "must be after start time"
+  new_user_wizard:
+    companies:
+      not_found: "We couldn't find any venues, please try again with more details"
+  app_marketing:
+    autoposts:
+      update:
+        success: "Autopost settings saved successfully"
+        failure: ""
+    autolikes:
+      update:
+        success: "Autolike settings saved successfully"
+        failure: ""
+    one_time_pushes:
+      create:
+        success: "Push notification sent successfully"
+        failure: ""
+        errors:
+          message_blank: "Please write some message"
+          no_app_id: "Push certificate isn't configured"
+    geo_fenced_pushs:
+      create:
+        success: 'Geo notification created successfully'
+        failure: ""
+  app_settings:
+    menus:
+      update: # reordering
+        success: "Menu updated successfully"
+    menu_cover_images:
+      update:
+        success: "Cover image style updated successfully"
+    web_links:
+      create:
+        success: "Menu link created successfully"
+        failure: ""
+    social_streams:
+      update:
+        success: "Social stream updated successfully"
+        failure: ""
+      create:
+        success: "Social stream created successfully"
+        failure: ""
+      add_account:
+        success: "Account successfully added"
+        failure: ""
+    connections:
+      fb_callback:
+        failure: "Ooops, something went wrong. Please try again."
+      ig_callback:
+        failure: "Ooops, something went wrong. Please try again."
+      tw_callback:
+        failure: "Ooops, something went wrong. Please try again."
+      connect_twitter:
+        failure: "Ooops, something went wrong. Please try again."
+    colors:
+      update:
+        success: "Colors saved"
+        failure: ""
+  stores_settings:
+    descriptions:
+      update_ios:
+        success: "App Store details saved"
+        failure: ""
+      update_android:
+        success: "Play Market details saved"
+        failure: ""
+  extensions:
+    product_menus:
+      update:
+        success: "Menu settings saved"
+        failure: ""
+      create_category:
+        success: "Category successfully created"
+        failure: ""
+      update_category:
+        success: "Category successfully updated"
+        failure: ""
+      create_menu_item:
+        success: "Menu item successfully created"
+        failure: ""
+      update_menu_item:
+        success: "Menu item successfully updated"
+        failure: ""
+    coupons:
+      update:
+        success: "Menu item successfully updated"
+        failure: ""
+      add_coupon_info:
+        success: "New coupon successfully added"
+        failure: ""
+    contacts:
+      update:
+        success: "Menu item successfully updated"
+        failure: ""
+      add_location:
+        success: "New location successfully added"
+        failure: ""
+    customer_feedbacks:
+      update:
+        success: "Menu item successfully updated"
+        failure: ""
+      update_info:
+        success: "Customer feedback details successfully updated"
+        failure: ""
+    pdf_files:
+      create:
+        success: "Menu link created successfully"
+        failure: ""
+    shopifies:
+      update:
+        success: "Shopify link saved successfully"
+        failure: ""
+    open_tables:
+      update:
+        success: "OpenTable link saved successfully"
+        failure: ""
+  accounts:
+    billing_infos:
+      update:
+        success: "Billing details successfully saved"
+        failure: ""
+      add_coupon:
+        success: "Coupon code applied successfully"
+        failure: ""
+        errors:
+          coupon_code_blank: "Please enter coupon code"
+  admin:
+    users:
+      update_ad_frequency:
+        success: "Saved"
+        failure: "Couldn't update frequency"
+    push_settings:
+      update:
+        success: "Certificate uploaded successfully"
+        failure: "Certificate upload failed"
+        errors:
+          not_p12_file: "Please upload p12 file"
+          wrong_app_id: "Wrong bundle id on certificate"
+          expired_cert: "Certificate expired"

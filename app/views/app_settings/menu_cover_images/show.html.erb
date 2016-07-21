@@ -1,0 +1,23 @@
+<% content_for :title, "Menu Cover Image" %>
+<% content_for :page_icon, 'fa-picture-o' %>
+
+<%= panel_view title: "Upload a menu cover image", icon: "fa-picture-o" do %>
+  <%= simple_form_for @app_info, url: app_settings_menu_cover_image_path, method: :patch, remote: true, html: { id: "cover-image-style" } do |f| %>
+    <%= resource_error_messages! @app_info %>
+    <%= f.input :cover_image_style, collection: cover_image_style_options,
+        label_method: :first, value_method: :last, as: :radio_buttons %>
+  <% end %>
+
+  <div class="dz-outer-wrapper">
+    <%= form_for @app_info, url: app_settings_menu_cover_image_path, method: :post, html: { class: "dropzone-box", id: "cover-image-upload", data: {current: @app_info.cover_image.url} } do |f| %>
+      <div class="dz-default dz-message">
+        <i class="fa fa-cloud-upload"></i>
+        Drop image in here<br><span class="dz-text-small">or click to pick manually</span>
+      </div>
+      <div class="fallback">
+        <%= f.file_field :cover_image %>
+        <%= f.submit "Save changes", class: "btn btn-lg btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

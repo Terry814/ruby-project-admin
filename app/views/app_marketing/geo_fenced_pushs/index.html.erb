@@ -1,0 +1,17 @@
+<% content_for :title, "Geo Fenced Push" %>
+<% content_for :page_icon, 'fa-map-marker' %>
+
+<%= upgrade_message_for! :push_notifications %>
+
+<%= panel_view title: "Add new geo notification", icon: "fa-link" do %>
+  <%= render 'form', geo_message: @new_geo_message %>
+<% end %>
+
+<%= panel_view title: "Active Geo notifications",
+               icon: "fa-link",
+               class: "widget-notifications",
+               body_class: "padding-sm" do %>
+  <div class="notifications-list" id="geo-messages">
+    <%= render partial: 'geo_message', collection: @geo_messages.all %>
+  </div>
+<% end %>

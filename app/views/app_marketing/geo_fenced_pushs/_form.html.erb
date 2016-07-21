@@ -1,0 +1,28 @@
+<%= simple_form_for geo_message, url: app_marketing_geo_fenced_pushs_path, remote: true do |f| %>
+  <%= resource_error_messages! geo_message %>
+
+  <%= f.input :message, placeholder: "Message" %>
+  <div class="form-group">
+    <%= f.input :latitude, placeholder: "Latitude", wrapper: :if3 %>
+    <%= f.input :longitude, placeholder: "Longitude", wrapper: :if3,
+      hint: link_to("lat-long lookup", "http://www.latlong.net", target: "blank") %>
+    <%= f.input :fire_on, collection: GeoMessage.fire_ons.map { |k, v| ["Fire on #{k}", k] }, wrapper: :if3, include_blank: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :start_time, wrapper: :iig3, wrapper_html:
+        { id: "start-time-input", data: {initial: geo_message.start_time.to_s} } do %>
+      <%= f.input_field :start_time, placeholder: "Start time (optional)", as: :string, class: "form-control" %>
+      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <% end %>
+
+    <%= f.input :end_time, wrapper: :iig3, wrapper_html:
+        { id: "end-time-input", data: {initial: geo_message.end_time.to_s} } do %>
+      <%= f.input_field :end_time, placeholder: "End time (optional)", as: :string, class: "form-control" %>
+      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <% end %>
+    <%= f.input :one_time_notification, wrapper: :ib4 %>
+  </div>
+
+  <%= f.button :submit, "Create Geo notification" %>
+<% end %>

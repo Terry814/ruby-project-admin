@@ -1,0 +1,23 @@
+<%= simple_form_for(@colors, url: app_settings_colors_path, remote: true, wrapper: :vertical_form, defaults: { input_html: { class: 'color-field' } }) do |f| %>
+  <%= resource_error_messages! @colors %>
+
+  <div class="row padding-xs-hr">
+    <div class="col-sm-6">
+      <%= f.input :header_bg_color, label: "App Header Background" %>
+      <%= f.input :header_text_color, label: "App Header Font" %>
+
+      <%= f.input :separator_color, label: "Menu Line" %>
+      <%= f.input :separator_accent_color, label: "Menu Line Accent" %>
+
+      <% bottom_left_data = { data: { position: 'top left' } } %>
+      <%= f.input :menu_cell_bg_color, label: "Menu Row", input_html: bottom_left_data %>
+      <%= f.input :menu_cell_text_color, label: "Menu Font", input_html: bottom_left_data %>
+
+
+      <%= f.input :menu_top_bg_color, label: "Menu Top Background", input_html: bottom_left_data %>
+      <%= f.input :menu_top_text_color, label: "Menu Top Font", input_html: bottom_left_data %>
+    </div>
+  </div>
+
+  <%= f.button :submit, "Save changes" %>
+<% end %>

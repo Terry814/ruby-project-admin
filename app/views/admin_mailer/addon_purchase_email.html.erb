@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= render 'user_details' %>
+
+    <ul>Addon details:
+      <li>name: <%= @addon.name %></li>
+      <li>price: <%= number_to_currency @addon.price %></li>
+      <li>description: <%= @addon.description %></li>
+    </ul>
+
+    <ul>Stripe charge details:
+      <li>id: <%= @charge.id %> <%= link_to "Show in Stripe", @charge_url %></li>
+      <li>amount: <%= number_to_currency (@charge.amount / 100) %></li>
+      <li>customer id: <%= @charge.customer %> <%= link_to "Show in Stripe", @customer_email %></li>
+    </ul>
+  </body>
+</html>

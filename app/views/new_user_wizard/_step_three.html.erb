@@ -1,0 +1,2 @@
+<%= render 'accounts/billing_infos/form', custom_url: accounts_billing_info_path(redirect_to: new_user_wizard_step_four_path, with_format: true), billing_info: @billing_info %>
+<%= link_to 'Skip this step', new_user_wizard_step_four_path(from_skip: true), remote: true, class: "pull-right" %>

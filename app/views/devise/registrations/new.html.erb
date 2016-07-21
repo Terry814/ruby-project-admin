@@ -1,0 +1,111 @@
+<% content_for :title, "Sign Up" %>
+<% content_for :body_class, "page-signup" %>
+<% content_for :container_class, "signup-container" %>
+
+<!-- Header -->
+<div class="signup-header">
+  <%= link_to root_path, class: "logo" do %>
+    <%= image_tag('logo_40high.png', style: "margin-top: -5px;") %>
+  <% end %>
+  <div class="slogan">
+    Beautiful. Powerful. Mobile Apps Made Easy.
+  </div> <!-- / .slogan -->
+</div>
+<!-- / Header -->
+
+<!-- Form -->
+<div class="signup-form">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "signup-form_id"}) do |f| %>
+    <div class="signup-text">
+      <span>Create an account</span>
+    </div>
+    <%= devise_error_messages! %>
+
+    <div class="form-group w-icon">
+      <%= f.text_field :full_name, autofocus: true, class: "form-control input-lg", placeholder: "Full name", id: "fullname_id" %>
+      <span class="fa fa-user signup-form-icon"></span>
+    </div>
+
+    <div class="form-group w-icon">
+      <%= f.text_field :company_name, class: "form-control input-lg", placeholder: "Company name", id: "company_name_id" %>
+      <span class="fa fa-hospital-o signup-form-icon"></span>
+    </div>
+
+    <div class="form-group w-icon">
+      <%= f.email_field :email, class: "form-control input-lg", placeholder: "E-mail", id: "email_id" %>
+      <span class="fa fa-envelope signup-form-icon"></span>
+    </div>
+
+    <div class="form-group w-icon">
+      <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "Password", id: "password_id" %>
+      <span class="fa fa-lock signup-form-icon"></span>
+    </div>
+
+    <div class="form-group w-icon">
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-lg", placeholder: "Confirm password", id: "password_conf_id" %>
+      <span class="fa fa-lock signup-form-icon"></span>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+      <label class="checkbox-inline">
+        <%= f.check_box :terms, class: "px", id: "confirm_id" %>
+        <span class="lbl">I agree with the <%= link_to "Terms and Conditions", 'http://getappease.com/terms/', target: "_blank" %></span>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "SIGN UP", class: "signup-btn bg-primary" %>
+    </div>
+  <% end %>
+  <!-- / Form -->
+</div>
+<!-- Right side -->
+
+<% content_for :after_container do %>
+  <div class="have-account">
+    Already have an account? <%= link_to "Sign In", new_session_path(resource_name) %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var $ph  = $('#page-signup-bg'),
+        $img = $ph.find('> img');
+
+    $(window).on('resize', function () {
+      $img.attr('style', '');
+      if ($img.height() < $ph.height()) {
+        $img.css({
+          height: '100%',
+          width: 'auto'
+        });
+      }
+    });
+
+    $("#signup-form_id").validate({ focusInvalid: true, errorPlacement: function () {} });
+
+    // Validate name
+    $("#fullname_id").rules("add", {
+      required: true,
+    });
+
+    // Validate company name
+    $("#company_name_id").rules("add", {
+      required: true,
+    });
+
+    // Validate email
+    $("#email_id").rules("add", {
+      required: true,
+      email: true
+    });
+    
+    // Validate password
+    $("#password_id").rules("add", {
+      required: true,
+    });
+    $("#password_conf_id").rules("add", {
+      required: true,
+    });
+  });
+</script>

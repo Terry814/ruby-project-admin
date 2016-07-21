@@ -1,0 +1,32 @@
+<div class="wizard" id="<%= wizard_id %>">
+
+  <div class="wizard-wrapper">
+    <ul class="wizard-steps">
+      <% steps.each_with_index do |name, idx| %>
+        <% step_number = idx + 1 %>
+        <li data-target="#<%= step_id_for(step_number) %>">
+          <span class="wizard-step-number"><%= step_number %></span>
+          <span class="wizard-step-caption">
+            <%= name %>
+          </span>
+        </li>
+      <% end %>
+    </ul> <!-- / .wizard-steps -->
+  </div>
+
+  <div class="wizard-content panel">
+    <% (1..steps.size).each do |step_number| %>
+      <div class="wizard-pane" id="<%= step_id_for(step_number) %>">
+        <%= render step_file_name_for(step_number) if current_step == step_number %>
+      </div>
+    <% end %>
+  </div> <!-- / .wizard-content -->
+
+</div> <!-- / .wizard -->
+
+<script>
+  $('#<%= wizard_id %>').pixelWizard();
+  <% unless current_step == 1 %>
+    $('#<%= wizard_id %>').pixelWizard('setCurrentStep', <%= current_step %>);
+  <% end %>
+</script>

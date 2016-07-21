@@ -1,0 +1,4 @@
+<%= div_for(ad_placement_id, class: "notification", style: "padding: 15px;") do %>
+  <div><%= ad_placement_id.placement_id %></div>
+  <%= link_to '', admin_ad_placement_id_path(ad_placement_id), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this placement id?", class: "notification-icon fa fa-times bg-default" %>  
+<% end %>

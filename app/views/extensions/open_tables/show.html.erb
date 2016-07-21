@@ -1,0 +1,8 @@
+<% content_for :title, "OpenTable" %>
+<% content_for :page_icon, 'fa-coffee' %>
+
+<%= upgrade_message_for! OpenTable %>
+
+<%= panel_view title: "Enter your OpenTable url to enable this extension", icon: "fa-link" do %>
+  <%= render 'form' %>
+<% end %>

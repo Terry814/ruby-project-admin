@@ -1,0 +1,10 @@
+<%= div_for(coupon, class: "notification") do %>
+  <% if coupon.expiry_date.past? %>
+    <div class="notification-title text-danger">EXPIRED</div>
+  <% else %>
+    <div class="notification-title text-success">ACTIVE</div>
+  <% end %>
+  <div class="notification-description"><%= coupon.title %></div>
+  <div class="notification-ago">Expires: <%= coupon.expiry_date.readable_inspect %></div>
+  <%= link_to '', extensions_coupons_coupon_info_path(coupon), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this coupon?", class: "notification-icon fa fa-times bg-default" %>  
+<% end %>

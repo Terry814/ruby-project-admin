@@ -1,0 +1,6 @@
+<%= div_for(web_link, class: "notification", style: "padding: 15px;") do %>
+  <div>"<%= web_link.menu_item.display_name %>" points to 
+  <%= link_to web_link.url, web_link.url, target: "_blank" %>
+  </div>
+  <%= link_to '', app_settings_web_link_path(web_link), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this web link?", class: "notification-icon fa fa-times bg-default" %>  
+<% end %>

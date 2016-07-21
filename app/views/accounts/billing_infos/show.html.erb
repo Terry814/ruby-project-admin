@@ -1,0 +1,10 @@
+<% content_for :title, "Billing Info" %>
+<% content_for :page_icon, 'fa-dollar' %>
+
+<%= panel_view title: "Billing info", icon: "fa-dollar" do %>
+  <%= render 'form', billing_info: @billing_info, custom_url: @custom_url %>
+<% end %>
+
+<%= panel_view title: "Have a coupon?", icon: "fa-money" do %>
+  <%= render 'coupon_form' %>
+<% end %>

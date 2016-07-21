@@ -1,0 +1,46 @@
+<% content_for :title, "Product Menu" %>
+<% content_for :page_icon, 'fa-puzzle-piece' %>
+
+<%= upgrade_message_for! ProductMenu %>
+
+<%= menu_settings_panel do %>
+  <%= render 'form' %>
+<% end %>
+
+<%= panel_view title: "Categories", icon: "fa-sitemap" do %>
+  <%= render 'category_form', cat: @category || @new_category %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Order</th>
+        <th>Category</th>
+        <th>Delete?</th>
+        <th>Edit?</th>
+      </tr>
+    </thead>
+    <tbody id="categories">
+      <%= render partial: 'category', collection: @product_menu.categories.all %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= panel_view title: "Product menu item", icon: "fa-puzzle-piece" do %>
+  <%= render 'menu_item_form', item: @menu_item || @new_menu_item %>
+<% end %>
+
+<%= panel_view title: "Existing products", icon: "fa-puzzle-piece",
+               class: "widget-notifications", body_class: "padding-sm" do %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Delete?</th>
+        <th>Edit?</th>
+      </tr>
+    </thead>
+    <tbody id="menu-items">
+      <%= render partial: 'menu_item', collection: @product_menu.menu_items.all %>
+    </tbody>
+  </table>
+<% end %>

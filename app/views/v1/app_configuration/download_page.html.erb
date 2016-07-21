@@ -1,0 +1,19 @@
+<% content_for :title, "Download" %>
+<% content_for :body_class, "page-signin" %>
+<% content_for :container_class, "signin-container" %>
+
+<div class="signin-form text-center text-bg">
+  <h2>Download <%= @app_name %></h2> 
+  <p>We created a simple version of a mobile app just for you.  Download your app by selecting iOS or Android below.</p>
+
+  <% if @ios_url %>
+    <%= link_to "Download iOS Preview", @ios_url, class: "btn btn-primary btn-lg" %>
+  <% end %>
+
+  <% if @android_url %>
+    <%= link_to "Download Android Preview", @android_url, class: "btn btn-primary btn-lg" %>
+  <% end %>
+
+  <h2>What's Next?</h2>
+  <p>Check out your app and then look for a note from us to help arrange our free full service setup to further customize your app. You can also learn more at <a href="http://getappease.com/learn-more/">http://getappease.com/learn-more/</a>.</p>
+</div>

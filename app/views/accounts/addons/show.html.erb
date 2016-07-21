@@ -1,0 +1,33 @@
+<%= panel_view title: "Optional Add-Ons", icon: "fa-plus" do %>
+  <% if @error.present? %>
+    <div class="alert alert-error alert-block">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+      <%= @error %>
+    </div>
+  <% end %>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Buy?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addons.each do |addon| %>
+        <tr>
+          <td><%= addon.name %></td>
+          <td><%= addon.description %></td>
+          <td><%= number_to_currency addon.price %></td>
+          <td>
+            <%= link_to accounts_add_ons_order_path(id: addon.id), method: :post, data: {confirm: "We'll be in touch the next business day to get started." }, "modal-class" => "info", "modal-title" => "Click OK to confirm purchase.", class: "btn btn-xs" do %>
+              <i class="fa fa-shopping-cart text-success"></i> Buy now
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

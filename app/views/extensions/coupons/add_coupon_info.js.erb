@@ -1,0 +1,8 @@
+$('#coupons-menu-form').replaceWith("<%=j render 'form' %>");
+<% if @new_coupon_info.errors.any? %>
+  $('#<%= dom_id @new_coupon_info %>').replaceWith("<%=j render 'coupon_form', coupon_info: @new_coupon_info %>");
+<% else %>
+  <% new_coupon_info = build_new_coupon_info %>
+  $('#<%= dom_id new_coupon_info %>').replaceWith("<%=j render 'coupon_form', coupon_info: new_coupon_info %>");
+  $('#coupon-infos').append("<%=j render 'coupon', coupon: @new_coupon_info %>");
+<% end %>

@@ -1,0 +1,19 @@
+<%= simple_form_for billing_info, url: custom_url ||= accounts_billing_info_path, method: :patch, remote: true, html: { id: "billing-info-form" } do |f| %>
+  <%= resource_error_messages! billing_info %>
+
+  Your selected plan: <%= current_user.plan_name %><br>
+  <% if billing_info.has_card_info? %>
+    Your current payment info: <%= billing_info.card_brand || "Card" %> ending in <%= billing_info.card_last_four %>
+  <% else %>
+    Your current payment info: None provided
+  <% end %>
+
+  <div class="padding-sm">
+    <% button_msg = billing_info.has_card_info? ? "Change Payment Info" : "Supply Payment Info" %>
+    <%= f.button :submit, button_msg, id: "stripe-button", data: {label: button_msg} %>
+  </div>
+
+  <% if not billing_info.subscribed? %>
+    (AppEase won't charge until you publish your first app)
+  <% end %>
+<% end %>

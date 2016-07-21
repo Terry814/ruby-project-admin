@@ -1,0 +1,4 @@
+$('#new-user-wizard-menu-item').slideUp(400, function() {
+  $(this).remove();
+  $.pjax({url: '<%= home_path_with_company_name %>', container: '[data-pjax-container]', timeout: 5000});
+});

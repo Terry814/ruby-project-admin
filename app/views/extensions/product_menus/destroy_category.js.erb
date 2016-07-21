@@ -1,0 +1,5 @@
+$('#<%= dom_id @category %>').ae_removeWithFadeOut();
+$('#category-form').replaceWith("<%=j render 'category_form', cat: @new_category %>");
+$('#categories').html("<%=j render partial: 'category', collection: @product_menu.categories.all %>");
+$('#menu-item-form').replaceWith("<%=j render 'menu_item_form', item: @new_menu_item %>");
+$('#menu-items').html("<%=j render partial: 'menu_item', collection: @product_menu.menu_items.all %>");

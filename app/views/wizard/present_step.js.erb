@@ -1,0 +1,4 @@
+$('#<%= step_id_for(current_step) %>').html("<%=j render step_file_name_for(current_step) %>");
+if ($('#<%= wizard_id %>').pixelWizard('currentStep') != <%= current_step %>) {
+  $('#<%= wizard_id %>').pixelWizard('setCurrentStep', <%= current_step %>);
+}

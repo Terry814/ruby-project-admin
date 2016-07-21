@@ -1,0 +1,14 @@
+<% content_for :title, "Menu links" %>
+<% content_for :page_icon, 'fa-link' %>
+
+<%= upgrade_message_for! WebLink %>
+
+<%= panel_view title: "Enter the full URL and label for a link to show in your menu", icon: "fa-link" do %>
+  <%= render 'form', web_link: @new_web_link %>
+<% end %>
+
+<%= panel_view title: "Active web links", icon: "fa-link", class: "widget-notifications", body_class: "padding-sm" do %>
+  <div class="notifications-list" id="web-links">
+    <%= render partial: 'web_link', collection: @web_links %>
+  </div>
+<% end %>

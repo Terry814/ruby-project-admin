@@ -1,0 +1,7 @@
+<% if @new_geo_message.errors.any? %>
+  $('#<%= dom_id(@new_geo_message) %>').replaceWith("<%=j render 'form', geo_message: @new_geo_message %>");
+<% else %>
+  <% new_geo_message = build_new_geo_message %>
+  $('#<%= dom_id(new_geo_message) %>').replaceWith("<%=j render 'form', geo_message: new_geo_message %>");
+  $('#geo-messages').append("<%=j render 'geo_message', geo_message: @new_geo_message %>");
+<% end %>

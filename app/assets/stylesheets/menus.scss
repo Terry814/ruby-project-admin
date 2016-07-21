@@ -1,0 +1,26 @@
+.menus {
+  .menu-item {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    color: #777;
+    cursor: pointer;
+    margin: 5px 0 0 0;
+    padding: 0 15px;
+    position: relative;
+  }
+  .menu-item:hover {
+    background: #f1f1f1;
+    color: #555555;
+  }
+  .menu-item,
+  .menu-item > span {
+    color: #555555;
+    display: block;
+    font-size: 13px;
+    line-height: 36px;
+  }
+  .left-align {
+    text-align: left;
+  }
+}

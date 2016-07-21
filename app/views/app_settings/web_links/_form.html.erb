@@ -1,0 +1,11 @@
+<%= simple_form_for web_link, url: app_settings_web_links_path, remote: true do |f| %>
+  <%= resource_error_messages! web_link %>
+  <div class="form-group">
+    <%= f.input :url, placeholder: "http://", wrapper: :if7 %>
+    <%= f.simple_fields_for :menu_item do |mf| %>
+      <%= mf.input :display_name, placeholder: "Menu Label", wrapper: :if4 %>
+    <% end %>
+  </div>
+
+  <%= f.button :submit, "Create Link" %>
+<% end %>

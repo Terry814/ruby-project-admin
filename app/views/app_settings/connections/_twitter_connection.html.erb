@@ -1,0 +1,15 @@
+<div id="twitter-connection">
+  <% if identity.persisted? %>
+  	Status: Connected
+
+    <div class="padding-sm">
+      <%= link_to "Disconnect from Twitter", app_settings_connections_twitter_path, method: :delete, remote: true, class: 'btn btn-lg btn-primary' %>
+    </div>
+  <% else %>
+    Status: Not Connected
+
+    <div class="padding-sm">
+      <%= link_to "Connect to Twitter", app_settings_connections_twitter_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  <% end %>
+</div>

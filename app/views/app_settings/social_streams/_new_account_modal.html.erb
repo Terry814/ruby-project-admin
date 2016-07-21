@@ -1,0 +1,49 @@
+<div id="new-social-source-modal" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Add social stream account.</h4>
+      </div>
+
+      <div class="modal-body">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#type-facebook" role="tab" aria-controls="type-facebook" data-toggle="tab">Facebook</a>
+          </li>
+          <li role="presentation">
+            <a href="#type-twitter" role="tab" aria-controls="type-twitter" data-toggle="tab">Twitter</a>
+          </li>
+          <li role="presentation">
+            <a href="#type-instagram" role="tab" aria-controls="type-instagram" data-toggle="tab">Instagram</a>
+          </li>
+          <li role="presentation">
+            <a href="#type-youtube" role="tab" aria-controls="type-youtube" data-toggle="tab">Youtube</a>
+          </li>
+        </ul>
+
+        <div class="tab-content tab-content-bordered">
+          <div role="tabpanel" class="tab-pane fade in active" id="type-facebook">
+            <%= render 'facebook_user_form' %>
+          </div> <!-- / .tab-pane -->
+          <div role="tabpanel" class="tab-pane fade in" id="type-twitter">
+            <%= render 'twitter_user_form' %>
+            <%= render 'twitter_hashtag_form' %>
+          </div> <!-- / .tab-pane -->
+          <div role="tabpanel" class="tab-pane fade in" id="type-instagram">
+            <%= render 'instagram_user_form' %>
+            <%= render 'instagram_hashtag_form' %>
+          </div> <!-- / .tab-pane -->
+          <div role="tabpanel" class="tab-pane fade in" id="type-youtube">
+            <%= render 'youtube_user_form' %>
+          </div> <!-- / .tab-pane -->
+        </div> <!-- / .tab-content -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" data-toggle="modal" class="btn" data-target="#new-social-source-modal">Cancel</button>
+      </div>
+
+    </div> <!-- / .modal-content -->
+  </div> <!-- / .modal-dialog -->
+</div>

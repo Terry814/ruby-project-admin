@@ -1,0 +1,17 @@
+<% content_for :title, "Autolike" %>
+
+<%= upgrade_message_for! :autolikes %>
+
+<%= panel_view title: "Autolike", icon: "fa-thumbs-up" do %>
+  <p>
+    AppEase will automatically like popular posts on Twitter when the hashtags you specify below are used. Liking posts is a great way to build your Twitter following and expose more people to your posts made using Autopost.
+  </p>
+
+  <% if @twitter_enabled %>
+    <%= render 'form' %>
+  <% else %>
+    <p>
+      Please connect to <%= link_to "Twitter", app_settings_path(:twitter) %> to enable this feature.
+    </p>
+  <% end %>
+<% end %>

@@ -1,0 +1,22 @@
+<% content_for :title, "Admin - Push Certificates" %>
+<% content_for :page_icon, 'fa-certificate' %>
+<% content_for :body_class, 'admin' %>
+
+<%= panel_view title: "Push Certificates", icon: "fa-certificate",
+         title_label: "#{@apps.count} of #{ApplicationInfo.count}",
+         title_label_class: "label-info",
+         footer: paginate(@apps) do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><i class="panel-title-icon fa fa-user"></i></th>
+        <th><i class="panel-title-icon fa fa-info"></i></th>
+        <th><i class="panel-title-icon fa fa-server"></i></th>
+        <th><i class="panel-title-icon fa fa-file-text"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'application_info', collection: @apps %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,20 @@
+<%= simple_form_for :new_user, url: quick_start_path do |f| %>
+  <div id="step-content">
+
+    <h2>Social Accounts</h2>
+    <h4>Please select the social accounts you want in your app’s social stream. You can edit these later.</h4>
+
+    <p>Step 3 of 4: Select social accounts</p>
+
+    <% @social_links.each.with_index do |link, i| %>
+      <div class="form-group">
+        <%= f.simple_fields_for 'social_links[]', i do |lf| %>
+          <%= lf.input :show, as: :boolean, input_html: {checked: true}, wrapper: :ib2 %>
+          <%= lf.input :url, as: :url, input_html: {value: link.link}, wrapper: :if8, readonly: true %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= button_tag "Continue", type: 'button', class: 'wizard-next-step-button btn btn-default' %>
+  </div>
+<% end %>

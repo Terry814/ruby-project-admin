@@ -1,0 +1,5 @@
+<%= simple_form_for @product_menu, url: extensions_product_menu_path, method: :patch, remote: true, html: { id: "product-menu-form" } do |f| %>
+  <%= resource_error_messages! @product_menu %>
+  <%= render 'shared/menu_item_fields', form: f %>
+  <%= f.button :submit, "Save changes" %>
+<% end %>

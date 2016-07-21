@@ -1,0 +1,13 @@
+<% item_path = item.new_record? ? extensions_product_menu_menu_items_path : extensions_product_menu_menu_item_path(item) %>
+<%= simple_form_for item, url: item_path, remote: true, html: {id: "menu-item-form"} do |f| %>
+  <%= resource_error_messages! item %>
+  <div class="form-group">
+    <%= f.input :name, placeholder: "Product name", wrapper: :if5 %>
+    <%= f.input :price, placeholder: "Price", step: 0.01, min: 0, wrapper: :if3 %>
+  </div>
+  <%= f.input :description, placeholder: "Product description", wrapper: :field8 %>
+  <%= f.input :image, wrapper: :field8 %>
+  <% choices = @product_menu.categories.all.collect {|cat| ["Category: #{cat.name}", cat.id] } %>
+  <%= f.input :product_menu_category_id, collection: choices, prompt: "Select category", wrapper: :field4 %>
+  <%= f.button :submit, "#{item.new_record? ? "Create" : "Save"} product" %>
+<% end %>

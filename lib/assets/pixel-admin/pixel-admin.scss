@@ -1,0 +1,84 @@
+// ### Pixel Admin"s stylesheets
+@import "./stylesheets/mixins";
+@import "./stylesheets/base";
+@import "./stylesheets/main_navbar";
+@import "./stylesheets/main_menu";
+@import "./stylesheets/navbar";
+@import "./stylesheets/buttons";
+@import "./stylesheets/progress_bars";
+@import "./stylesheets/labels";
+@import "./stylesheets/badges";
+@import "./stylesheets/breadcrumb";
+@import "./stylesheets/alerts";
+@import "./stylesheets/tables";
+@import "./stylesheets/navs";
+@import "./stylesheets/dropdowns";
+@import "./stylesheets/button_groups";
+@import "./stylesheets/pagination";
+@import "./stylesheets/list_groups";
+@import "./stylesheets/forms";
+@import "./stylesheets/input_groups";
+@import "./stylesheets/panels";
+@import "./stylesheets/wells";
+@import "./stylesheets/popovers";
+@import "./stylesheets/tooltips";
+@import "./stylesheets/modals";
+@import "./stylesheets/accordions";
+@import "./stylesheets/notes";
+@import "./stylesheets/counters";
+@import "./stylesheets/colors";
+@import "./stylesheets/stats";
+@import "./stylesheets/utils";
+
+// jQuery UI
+//
+
+@import "./stylesheets/plugins/jquery_ui/common";
+@import "./stylesheets/plugins/jquery_ui/sliders";
+@import "./stylesheets/plugins/jquery_ui/accordions";
+@import "./stylesheets/plugins/jquery_ui/autocomplete";
+@import "./stylesheets/plugins/jquery_ui/menus";
+@import "./stylesheets/plugins/jquery_ui/spinners";
+@import "./stylesheets/plugins/jquery_ui/progress_bars";
+@import "./stylesheets/plugins/jquery_ui/tabs";
+@import "./stylesheets/plugins/jquery_ui/datepicker";
+@import "./stylesheets/plugins/jquery_ui/tooltips";
+
+
+// Plugins
+//
+
+// @import "./stylesheets/plugins/pa.switcher";
+// @import "./stylesheets/plugins/pa.limiter";
+// @import "./stylesheets/plugins/pa.expanding_input";
+@import "./stylesheets/plugins/pa.wizard";
+@import "./stylesheets/plugins/pa.file_input";
+// @import "./stylesheets/plugins/jquery.select2";
+@import "./stylesheets/plugins/bootstrap_datepicker";
+// @import "./stylesheets/plugins/bootstrap_timepicker";
+// @import "./stylesheets/plugins/bootstrap_datepaginator";
+// @import "./stylesheets/plugins/bootstrap_tabdrop";
+@import "./stylesheets/plugins/jquery.minicolors";
+
+// @import "./stylesheets/plugins/bootstrap_editable/bootstrap_editable";
+// @import "./stylesheets/plugins/bootstrap_editable/address";
+// @import "./stylesheets/plugins/bootstrap_editable/typeahead";
+
+// @import "./stylesheets/plugins/bootbox";
+// @import "./stylesheets/plugins/jquery.datatables";
+@import "./stylesheets/plugins/jquery.growl";
+@import "./stylesheets/plugins/dropzone";
+// @import "./stylesheets/plugins/summernote";
+// @import "./stylesheets/plugins/bootstrap_markdown";
+// @import "./stylesheets/plugins/jquery.sparkline";
+@import "./stylesheets/plugins/easy_pie_chart";
+@import "./stylesheets/plugins/morris";
+// @import "./stylesheets/plugins/jquery.flot";
+@import "./stylesheets/plugins/slim_scroll";
+
+// Additional
+//
+
+@import "./stylesheets/widgets/widgets";
+@import "./stylesheets/pages/pages";
+@import "./stylesheets/themes/clean/clean";

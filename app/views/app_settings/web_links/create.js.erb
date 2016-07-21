@@ -1,0 +1,7 @@
+<% if @new_web_link.errors.any? %>
+  $('#<%= dom_id(@new_web_link) %>').replaceWith("<%=j render 'form', web_link: @new_web_link %>");
+<% else %>
+  <% new_web_link = build_new_web_link %>
+  $('#<%= dom_id(new_web_link) %>').replaceWith("<%=j render 'form', web_link: new_web_link %>");
+  $('#web-links').append("<%=j render 'web_link', web_link: @new_web_link %>");
+<% end %>

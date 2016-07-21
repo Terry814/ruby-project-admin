@@ -1,0 +1,6 @@
+<%= div_for(geo_message, class: "notification") do %>
+  <div class="notification-title"><%= geo_message.message %></div>
+  <div class="notification-description">Near <%= location_link(geo_message) %></div>
+  <div class="notification-ago"><%= time_frame_string(geo_message) %></div>
+  <%= link_to '', app_marketing_geo_fenced_push_path(geo_message), method: :delete, remote: true, data: {confirm: "Click OK to confirm delete." }, "modal-title" => "Delete this geo notification", class: "notification-icon fa fa-times bg-default" %>
+<% end %>

@@ -1,0 +1,7 @@
+<% if @new_pdf_file.errors.any? %>
+  $('#<%= dom_id(@new_pdf_file) %>').replaceWith("<%=j render 'form', pdf_file: @new_pdf_file %>");
+<% else %>
+  <% new_pdf_file = build_new_pdf_file %>
+  $('#<%= dom_id(new_pdf_file) %>').replaceWith("<%=j render 'form', pdf_file: new_pdf_file %>");
+  $('#pdf-files').append("<%=j render 'pdf_file', pdf_file: @new_pdf_file %>");
+<% end %>

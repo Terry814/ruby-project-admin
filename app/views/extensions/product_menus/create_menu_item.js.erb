@@ -1,0 +1,6 @@
+<% if @new_menu_item.errors.any? %>
+  $('#menu-item-form').replaceWith("<%=j render 'menu_item_form', item: @new_menu_item %>");
+<% else %>
+  $('#menu-item-form').replaceWith("<%=j render 'menu_item_form', item: build_new_menu_item %>");
+  $('#menu-items').append("<%=j render 'menu_item', menu_item: @new_menu_item %>");
+<% end %>

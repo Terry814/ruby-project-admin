@@ -1,0 +1,13 @@
+<%= content_tag_for(:tr, application_info) do %>
+  <td><%= application_info.user.email %></td>
+  <td><%= "com.appease.#{application_info.app_id_suffix}" %></td>
+  <td><%= check_or_close application_info.onesignal_app_id.present? %></td>
+  <td>
+    <%= simple_form_for :certificate, url: admin_push_setting_path(app_id: application_info.id), method: :put do |f| %>
+      <%= link_to '#', class: 'upload-certificate' do %>
+        <i class="fa fa-upload"></i>
+      <% end %>
+      <%= f.input :file, as: :file %>
+    <% end %>
+  </td>
+<% end %>

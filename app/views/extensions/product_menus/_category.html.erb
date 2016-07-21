@@ -1,0 +1,6 @@
+<%= content_tag_for(:tr, category) do %>
+  <td><%= category.position + 1 %></td>
+  <td><%= category.name %></td>
+  <td><%= link_to 'delete', extensions_product_menu_category_path(category), method: :delete, remote: true %></td>
+  <td><%= link_to 'edit', extensions_product_menu_edit_category_path(category), remote: true %></td>
+<% end %>

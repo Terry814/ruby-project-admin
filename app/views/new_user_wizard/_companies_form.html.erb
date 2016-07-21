@@ -1,0 +1,18 @@
+<hr>
+Select your company:
+<%= simple_form_for :company, url: new_user_wizard_companies_path, method: :post, remote: true do |f| %>
+  <%= simple_fields_for @company_info do |ci| %>
+    <%= ci.hidden_field :name %>
+    <%= ci.hidden_field :web_link %>
+    <%= ci.hidden_field :street %>
+    <%= ci.hidden_field :city %>
+    <%= ci.hidden_field :state %>
+    <%= ci.hidden_field :postal_code %>
+  <% end %>
+
+  <div class="padding-sm">
+    <%= f.input :venue_id, collection: @companies, label_method: -> (c) { "#{c.name}, #{c.full_address}" }, value_method: -> (c) { @companies.index(c) }, checked: 0, as: :radio_buttons, wrapper: :vertical_radio_and_checkboxes, label: false %>
+  </div>
+
+  <%= submit_tag "Done - Now select package", class: "btn btn-primary" %>
+<% end %>

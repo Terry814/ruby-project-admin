@@ -1,0 +1,84 @@
+<%= content_for :title, "Invoice" %>
+<% if @for_print %>
+  <%= content_for :body_class, "page-invoice page-invoice-print" %>
+<% else %>
+  <%= content_for :body_class, "page-invoice" %>
+<% end %>
+
+<% unless @for_print %>
+  <div class="page-header">
+    <h1><i class="fa fa-file-text-o page-header-icon"></i>&nbsp;&nbsp;Invoice Page</h1>
+
+    <%= link_to accounts_billing_history_invoice_print_path(@invoice), class: "pull-right btn btn-primary", style: "display: block;", target: "_blank" do %>
+      <i class="fa fa-print"></i>&nbsp;&nbsp;Print version
+    <% end %>
+  </div> <!-- / .page-header -->
+<% end %>
+    
+  <!-- NOTE: Add .page-invoice class to the body element -->
+
+<!-- 5. $INVOICE_PAGE ==============================================================================
+
+    Invoice page
+-->
+<div class="panel invoice">
+  <div class="invoice-header">
+    <h3>
+      <div>
+        <small><strong><%= @sender_details.company_name %></strong></small><br>
+        INVOICE
+      </div>
+    </h3>
+    <address>
+      <%= @sender_details.address_line_one %>
+      </br>
+      <%= @sender_details.address_line_two %>
+      </br>
+      <%= @sender_details.address_line_three %>
+    </address>
+    <div class="invoice-date">
+      <small><strong>Date</strong></small><br>
+      <%= @invoice.date.to_formatted_s(:long) %>
+    </div>
+  </div> <!-- / .invoice-header -->
+  <div class="invoice-info">
+    <div class="invoice-recipient">
+      </br>
+      <strong><%= current_user.full_name %></strong>
+      </br>
+      <%= current_user.company_name %>
+    </div> <!-- / .invoice-recipient -->
+    <div class="invoice-total">
+      <span><%= number_to_currency @invoice.total %></span>
+      TOTAL:
+    </div> <!-- / .invoice-total -->
+  </div> <!-- / .invoice-info -->
+  <hr>
+  <div class="invoice-table">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Price
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoice.invoice_lines.each do |invoice_line| %>
+          <tr>
+            <td>
+              <%= invoice_line.description %>
+            </td>
+            <td>
+              <%= number_to_currency invoice_line.amount %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> <!-- / .invoice-table -->
+</div> <!-- / .invoice -->
+<!-- /5. $INVOICE_PAGE -->

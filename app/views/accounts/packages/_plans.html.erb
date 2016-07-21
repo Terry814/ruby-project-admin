@@ -1,0 +1,21 @@
+<% col = 12 / Rails.configuration.appease_plans.count %>
+<% Rails.configuration.appease_plans.each do |plan, info| %>
+  <div class="plan-col col-sm-<%= col %>">
+    <div class="plan-header bg-light-green <%= current_user.current_package == plan ? 'darker' : '' %>"><%= info.name.upcase %></div>
+    <div class="plan-pricing bg-light-green <%= current_user.current_package == plan ? 'darker' : '' %>"><span class="plan-currency">$</span><span class="plan-value"><%= info.price %></span><span class="plan-period"></span><br>Paid monthly</div>
+    <ul class="plan-features">
+
+      <% info.features.each do |feature| %>
+        <li><%= feature %></li>
+      <% end %>
+      
+      <li class="bg-light-green <%= current_user.current_package != plan ? 'plan-button' : ' darker' %>">
+      <% if current_user.current_package == plan %>
+        <strong>YOUR CURRENT PLAN</strong>
+      <% else %>
+        <%= link_to "SELECT", accounts_appease_packages_path(package: User.current_packages[plan]), method: :patch, remote: true, class: "" %>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>

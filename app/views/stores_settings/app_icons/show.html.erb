@@ -1,0 +1,129 @@
+<% content_for :title, "App Icon" %>
+<% content_for :page_icon, 'fa-bookmark' %>
+
+<%= panel_view title: "Upload your app icon (1024x1024)", icon: "fa-picture-o",
+  heading_text: publishing_changes do %>
+  <%= form_for @app_stores_info, url: stores_settings_app_icon_path, method: :patch, html: { id: "app-icon-upload", class: "dropzone-box" } do |f| %>
+      <div class="dz-default dz-message">
+        <i class="fa fa-cloud-upload"></i>
+        Drop files in here<br><span class="dz-text-small">or click to pick manually</span>
+      </div>
+      <div class="fallback">
+        <%= f.file_field :app_icon %>
+        <%= f.submit "Save changes", class: "btn btn-lg btn-primary" %>
+      </div>
+  <% end %>
+<% end %>
+<script>
+  $(function() {
+    Dropzone.autoDiscover = false;
+    $("#app-icon-upload").dropzone({
+      paramName: "app_stores_info[app_icon]",
+      maxFilesize: 3, // MB
+      maxFiles: 1,
+      acceptedFiles: 'image/*',
+
+      dictResponseError: "Can't upload file!",
+      autoProcessQueue: true,
+      thumbnailWidth: 300,
+      thumbnailHeight: 300,
+
+      previewTemplate:
+      '<div class="dz-preview dz-file-preview">' +
+        '<div class="dz-details">' +
+          '<div class="dz-filename">' +
+            '<span data-dz-name></span>' +
+          '</div>' +
+          '<div class="dz-size">' +
+            'File size: <span data-dz-size></span>' +
+          '</div>' +
+          '<div class="dz-thumbnail-wrapper">' +
+            '<div class="dz-thumbnail">' +
+              '<img data-dz-thumbnail>' +
+              '<span class="dz-nopreview">No preview</span>' +
+              '<div class="dz-success-mark">' +
+                '<i class="fa fa-check-circle-o"></i>' +
+              '</div>' +
+              '<div class="dz-error-mark">' +
+                '<i class="fa fa-times-circle-o"></i>' +
+              '</div>' +
+              '<div class="dz-error-message">' +
+                '<span data-dz-errormessage></span>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="progress progress-striped active">' +
+          '<div class="progress-bar progress-bar-success" data-dz-uploadprogress>' +
+          '</div>' +
+        '</div>' +
+      '</div>',
+
+      init: function() {
+        this.on("maxfilesexceeded", function(file) {
+          this.removeAllFiles();
+          this.addFile(file);
+        });
+
+        // Register for the thumbnail callback.
+        // When the thumbnail is created the image dimensions are set.
+        this.on("thumbnail", function(file) {
+          if (!file.mockFile) {
+            if (file.width === 1024 && file.height === 1024) {
+              file.acceptDimensions();
+            } else {
+              file.rejectDimensions();
+            }
+          }
+        });
+
+        <% if @app_stores_info.app_icon.exists? %>
+          var mockFile = { name: "<%= @app_stores_info.app_icon_file_name %>",
+                           size: <%= @app_stores_info.app_icon_file_size %>,
+                           accepted: true,
+                           mockFile: true
+                         };
+          this.emit("addedfile", mockFile);
+          this.emit("thumbnail", mockFile, "<%= @app_stores_info.app_icon.url(:thumb) %>");
+          this.emit("uploadprogress", mockFile, 100, 1);
+          this.files.push(mockFile);
+        <% end %>
+      },
+
+      // Instead of directly accepting / rejecting the file, setup two
+      // functions on the file that can be called later to accept / reject
+      // the file.
+      accept: function(file, done) {
+        if (file.mockFile) {
+          done();
+        } else{
+          file.acceptDimensions = done;
+          file.rejectDimensions = function() {
+            done("Icon dimensions should be 1024x1024.");
+          };
+        }
+        // Of course you could also just put the `done` function in the file
+        // and call it either with or without error in the `thumbnail` event
+        // callback, but I think that this is cleaner.
+      }
+    });
+  });
+</script>
+<!-- / Javascript -->
+<style>
+  #app-icon-upload .dropzone-box {
+    min-height: 250px;
+  }
+  #app-icon-upload .dz-preview {
+    width: 222px;
+  }
+  #app-icon-upload .dz-thumbnail {
+    width: 200px;
+    height: 200px;
+  }
+  #app-icon-upload .dz-thumbnail > img {
+    width: 200px;
+    height: 200px;
+    max-height: none;
+  }
+</style>

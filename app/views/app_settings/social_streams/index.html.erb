@@ -1,0 +1,12 @@
+<% content_for :title, "Social Streams" %>
+<% content_for :page_icon, 'fa-comments-o' %>
+
+<%= upgrade_message_for! SocialStream %>
+
+<div id="social-streams">
+  <%= render partial: 'social_stream', collection: @social_streams %>
+</div>
+
+<%= panel_view title: "New Social Stream", icon: "fa-plus" do %>
+  <%= render 'form', social_stream: @new_social_stream %>
+<% end %>

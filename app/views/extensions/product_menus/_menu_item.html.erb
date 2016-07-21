@@ -1,0 +1,6 @@
+<%= content_tag_for(:tr, menu_item) do %>
+  <td><%= menu_item.name %></td>
+  <td><%= menu_item.product_menu_category.name %></td>
+  <td><%= link_to 'delete', extensions_product_menu_menu_item_path(menu_item), method: :delete, remote: true %></td>
+  <td><%= link_to 'edit',extensions_product_menu_edit_menu_item_path(menu_item), remote: true %></td>
+<% end %>

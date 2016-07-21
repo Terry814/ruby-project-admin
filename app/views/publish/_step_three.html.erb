@@ -1,0 +1,11 @@
+OK, you're ready!:
+<%= form_tag publish_done_path, method: :post, remote: true do %> 
+  <div class="checkbox padding-sm-vr">
+    <label>
+      <%= check_box_tag 'approve', '1', false, class: 'px' %>
+      <span class="lbl">I approve my app for publishing</span>
+    </label>
+  </div>
+  <%= link_to 'Back', publish_step_two_path, remote: true, class: "btn" %>
+  <%= submit_tag 'Publish my App!', class: 'btn btn-primary' %>
+<% end %>
